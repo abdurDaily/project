@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\QuestionDetails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Mockery\Matcher\Subset;
 
 class QuestionController extends Controller
 {
@@ -138,21 +139,27 @@ class QuestionController extends Controller
         return redirect()->route('question.details.list')->with('success','new previous question added !');
     }
     /*
-     * QUESTION UODATE/EDIT
+     * DELETE INDIVIDUAL QSN
     */
-    public function detailsUpdate(Request $request,$id){
-        $updateQsnData = Subject::with('detailsInfo')->latest()->find($id);
-        dd($updateQsnData);
+    public function deleteQsn(Request $request, $id){ 
+        $qsnDelet = QuestionDetails::find($id);
+        $qsnDelet->delete();
+        return redirect()->route('question.details.list')->with('error','A previous Qsn deleted!');
     }
-    
+    /*
+     * DELETE FULL COLUMN
+    */
+    public function deleteQsnColumn($id){ 
+        $qsnDelet = Subject::find($id);
+        $qsnDelet->delete();
+        return redirect()->route('question.details.list')->with('error-column','a column deleted');
+    }
+
     /*
      ** QUESTION DETAILS LIST 
     */
     public function detailsList(){
-        // $details = Semester::with(['subjects'])->get();
-        // $details = QuestionDetails::with('semester')->get();
         $details = Subject::with('detailsInfo')->latest()->paginate(10);
-       //dd($details);
         return view('Admin.Question.detailslist',compact('details'));
     }
 

@@ -10,6 +10,12 @@
                         {{ session()->get('success') }}
                      </div>
                     @endif
+                                    @if ($message = Session::get('error-column'))
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>{{ $message }}</strong> 
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><img src="{{ asset('fonts_icon/circle-xmark-solid.svg') }}"  alt=""></button>
+                                        </div>
+                                    @endif
 
                     <div class="card-header" style="background: #041d61;color:#fff;padding:15px 20px;">
                         <h1>Previous Year Question's List </h1>
@@ -33,8 +39,17 @@
                         <table class="table table-striped table-hover">
                             <tr>
                                 <th>SN</th>
-                                <th>Semester</th>
                                 <th>Subject</th>
+                                <th>Question's
+                                @if ($message = Session::get('error'))
+
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>{{ $message }}</strong> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><img src="{{ asset('fonts_icon/circle-xmark-solid.svg') }}"  alt=""></button>
+                                </div>
+                                @endif
+
+                                </th>
                                 <th>Created_at</th>
                                 <th>Action</th>
                             </tr>
@@ -58,7 +73,14 @@
                                                 @forelse ($data->detailsInfo as $detail)
                                                 <div id="flush-collapse{{ $data->id }}" style="background: #f2e9e9; padding:5px;" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                                     <div class="accordion-body">
-                                                        <a target="_blank" href="{!! asset('storage/Questions/'.$detail->image) !!}"> <strong>Download</strong> <span class="text-danger">{{ $detail->sessions }}</span> <strong>PDF</strong> </a>
+                                                        @if (isset($detail->sessions ))
+                                                        <a target="_blank" href="{!! asset('storage/Questions/'.$detail->image) !!}"> <strong>Download</strong> <span class="text-danger">{{ $detail->sessions }}</span> <strong>PDF</strong>
+                                                            <a class="btn btn-danger btn-sm" href="{{ route('question.update',$detail->id) }}"><span class="badge badge-light">Delete</span></a>
+                                                        </a>
+
+                                                        
+                                                       
+                                                        @endif
                                                     </div>
                                                 </div> 
                                                 @empty
@@ -72,8 +94,7 @@
                                     <td>{{ $data->created_at->format('d M, Y') }} </td>
                                   <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('question.update',$data->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="{{ route('delete.question.column',$data->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                     </div>
                                   </td>
                                 </tr>

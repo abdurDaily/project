@@ -5,16 +5,17 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" style="background: #2c09c9; color:#fff;padding:15px 10px">
-                        <h1>Inseart Question</h1>
+                        <h1>Update Question</h1>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route("question.upload") }}" method="POST" enctype="multipart/form-data">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             @csrf 
+                            @method('put')
                             <label for="semester">Select a Semester</label>
                             <select name="semester" id="semester" class="form-control mb-3">
                                 <option value="" selected disabled>Select a Semester</option>
-                                @foreach ($semester as $responce)
-                                    <option value="{{ $responce->id }}">{{ $responce->semester }}</option>
+                                @foreach ($semester as $semester)
+                                    <option value="{{ $semester->id }} {{ $semester->id == $subject->semester_id ? 'selected' : '' }}">{{ $semester->semester }}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('semester'))
@@ -31,6 +32,7 @@
                               <span class="text-danger">{{ $errors->first('subjects') }}</span> <br>   
                             @endif
 
+
                             
                             <label for="sessions">Write Sessions Name & Year --(Autumn-2022)--</label>
                             <input name="sessions" id="sessions" type="text" class="form-control my-3" placeholder="--(Autumn-2022)--">
@@ -44,7 +46,7 @@
                             @if ($errors->has('pdf_file'))
                                 <span class="text-danger">{{ $errors->first('pdf_file') }}</span> <br>   
                             @endif
-                            <button class="btn btn-primary w-100 mt-3">Upload</button>
+                            <button class="btn btn-primary w-100 mt-3">Update</button>
                         </form>
 
                     </div>
