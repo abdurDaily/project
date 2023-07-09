@@ -8,6 +8,7 @@
         <meta name="description" content="Rubick admin is super flexible, powerful, clean & modern responsive bootstrap admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Rubick Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
+        @stack('niceSelect2CSS')
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <title>Admin Dashboard </title>
         {{-- PAGINATION  --}}
@@ -59,6 +60,10 @@
                         </li>
                     </ul>
                 </li>
+
+
+                @hasanyrole('admin')
+
                 <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-feather="box"></i> </div>
@@ -91,6 +96,39 @@
                         </li>
                     </ul>
                 </li>
+
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-feather="box"></i> </div>
+                        <div class="menu__title"> Attendance  <i data-feather="chevron-down" class="menu__sub-icon "></i> </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('add.new.batch') }}" class="menu menu--active">
+                                <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="menu__title"> Add New Batch </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admit.student') }}" class="menu menu--active">
+                                <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="menu__title"> Admit Student </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('present.students') }}" class="menu menu--active">
+                                <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="menu__title"> Attendance </div>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
+
+                @endhasanyrole
+
+
+
                 <li>
                     <a href="side-menu-light-inbox.html" class="menu">
                         <div class="menu__icon"> <i data-feather="inbox"></i> </div>
@@ -156,6 +194,11 @@
                             </li>
                         </ul>
                     </li>
+
+
+                    @hasanyrole('admin')
+
+
                     <li>
                         <a href="javascript:;.html" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="box"></i> </div>
@@ -191,6 +234,40 @@
                             </li>
                         </ul>
                     </li>
+                {{-- ATTENDANCE START  --}}
+                    <li>
+                        <a href="javascript:;.html" class="side-menu">
+                            <div class="side-menu__icon"> <i data-feather="box"></i> </div>
+                            <div class="side-menu__title">
+                                Attendance
+                                <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('add.new.batch') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="side-menu__title"> Add New Batch</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admit.student') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="side-menu__title"> Admit Student</div>
+                                </a>
+                            </li>
+                        <li>
+                                <a href="{{ route('present.students') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="side-menu__title"> Attendance </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                {{-- ATTENDANCE END  --}}
+
+                    @endhasanyrole
+
                     <li>
                         <a href="side-menu-light-inbox.html" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="inbox"></i> </div>
@@ -321,6 +398,7 @@
         {{-- CKEDITOR  --}}
           @stack('ckeditor')
           @stack('ajax')
+          @stack('niceSelect2')
         <script src="{{ asset('dist/js/app.js') }}"></script>
 
         <!-- END: JS Assets-->

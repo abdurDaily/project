@@ -15,6 +15,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "@ckeditor/ckeditor5-autoformat": "^38.0.1"
+        "@ckeditor/ckeditor5-autoformat": "^38.0.1",
+        "select2": "^4.1.0-rc.0"
     }
 }

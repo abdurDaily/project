@@ -22,5 +22,7 @@ class AuthorSeeder extends Seeder
         $user->password = Hash::make('password');
         $user->status = 1;
         $user->save();
+        
+        $user->assignRole('admin');
     }
 }
