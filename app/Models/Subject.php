@@ -20,4 +20,9 @@ class Subject extends Model
     public function detailsInfo(){
         return $this->hasMany(QuestionDetails::class);
     }
+
+
+    public function attendances(){
+      return $this->hasMany(Attendance::class);
+  }
 }

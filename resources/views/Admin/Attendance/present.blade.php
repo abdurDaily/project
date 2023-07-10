@@ -9,68 +9,75 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-7 mx-auto p-3 mb-3" style="background: #1b3672;">
                                 <form action="{{ route('check.present') }}" method="GET">
-                                <div class="row">
-                                    <div class="col-10">
-                                        {{-- <form action="{{ route('check.present') }}" method="GET"> --}}
-                                            @csrf 
+                                    @csrf 
+                                    <div class="row input-group mx-auto">
+                                        <div class="col-9 mt-1">
                                             <select name="batch_id" id="batch_id" class="form-control">
-                                              @foreach ($result as $data )
-                                                  <option value="{{ $data->id }}">{{ $data->batch_no }}</option>
-                                              @endforeach
+                                                @foreach ($result as $data )
+                                                    <option value="{{ $data->id }}">{{ $data->batch_no }}</option>
+                                                @endforeach
                                             </select>
-                                         {{-- <button class="btn btn-primary">Submit</button> --}}
-                                        {{-- </form> --}}
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="btn btn-light" style="background: rgb(247, 243, 243)424;color:#000;">Submit</button>
+                                        </div>
                                     </div>
-                                    <div class="col-2">
-                                        <button class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form> 
+                            </div>
 
 
-                                
-                            </div>
-                            <div class="col-md-6">
-                                <input name="date" type="date" class="form-control">
-                            </div>
 
                             @if (isset($studentInfo))
-                                
-                            
                             <form action="{{ route('present.submit') }}" method="POST">
                                @csrf
-                               <input name="check_id" type="hidden" value="{{ isset(request()->batch_id) ? request()->batch_id : '' }}">
-                               <table class="table table-responsive">
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Name</th>
-                                    <th>Std id</th>
-                                    <th>Status</th>
-                                    {{-- <th>SN</th> --}}
-                                </tr>
-                                @forelse ($studentInfo as $detail)
-                                    <tr>
-                                        <td>{{ $detail->id }}</td>
-                                        <td>{{ $detail->std_name }}</td>
-                                        <td>
-                                            {{ $detail->std_id }}
-                                        </td>
-                                        <td>
-                                            <div class="form-check form-switch">
-                                                <input name="isPresent[]" class="form-check-input" value=" {{ $detail->std_id }}" type="checkbox" id="flexSwitchCheckDefault">
-                                              </div>
-                                            
-                                        </td>
-                                    </tr>
-                                @empty       
-                                @endforelse
-                            </table>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input name="date" type="date" class="form-control">
+                                </div>
 
+
+                                <div class="col-md-6">
+                                    <label for="subject_id" class="mt-3">Select a Batch No</label>
+                                    <select name="subject_id" id="subject_id" class="form-control">
+                                        <option  value="" selected disabled>Select a batch</option>
+                                        @foreach ($subjectId as $subjectData)
+                                            <option value="{{ $subjectData->id }}">{{ $subjectData->subject_name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <input name="check_id" type="hidden" value="{{ isset(request()->batch_id) ? request()->batch_id : '' }}">
+                                </div>
+
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th>SN</th>
+                                        <th>Name</th>
+                                        <th>Std id</th>
+                                        <th>Status</th>
+                                        {{-- <th>SN</th> --}}
+                                    </tr>
+                                    @forelse ($studentInfo as $detail)
+                                        <tr>
+                                            <td>{{ $detail->id }}</td>
+                                            <td>{{ $detail->std_name }}</td>
+                                            <td>
+                                                {{ $detail->std_id }}
+                                            </td>
+                                            <td>
+                                                <div class="form-check form-switch">
+                                                    <input name="isPresent[]" class="form-check-input" value="{{ $detail->id }}" type="checkbox" id="flexSwitchCheckDefault">
+                                                  </div>
+                                                
+                                            </td>
+                                        </tr>
+                                    @empty       
+                                    @endforelse
+                                </table>
+                            </div>
                             <button class="btn btn-primary w-100 mt-5">Submit</button>
-                            </form>
-                            @endif
+                        </form>
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -91,7 +98,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
+    
     $(document).ready(function() {
+    $('#batch_no').select2();
+    $('#subject_id').select2();
     $('#batch_id').select2();
 });
 

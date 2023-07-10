@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('attendance_stores', function (Blueprint $table) {
             $table->id();
             $table->foreignId('attendance_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('admit_student_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('admit_student_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

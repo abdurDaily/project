@@ -12,4 +12,8 @@ class Attendance extends Model
     public function attendanceStore(){
         return $this->hasMany(AttendanceStore::class);
     }
+    
+    public function subject(){
+        return $this->belongsTo(Subject::class);
+    }
 }

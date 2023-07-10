@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('date');
             $table->foreignId('batch_number_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('subject_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
