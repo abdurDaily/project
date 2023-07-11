@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-4">
                             <label for="date">Select Date</label>
-                            <input type="date" class="form-control">
+                            <input name="date" type="date" class="form-control">
                         </div>
                     </div>
                 
@@ -41,7 +41,7 @@
 
         <div class="row">
             <div class="col-12">
-                <table class="table table-responsive">
+                <table class="table table-responsive table-striped table-hover">
                     <tr>
                         <th>SN</th>
                         <th>Student Name</th>
@@ -60,7 +60,7 @@
                                 @if (in_array($student->id,$attendedStudetID))
                                 present
                                 @else
-                                Absent  
+                                 <strong class="text-danger"> Absent  </strong>
                                 @endif
                                 
 

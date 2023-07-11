@@ -102,10 +102,7 @@ class AttendanceController extends Controller
 
         $students = AdmitStudent::where('batch_number', $request->batch_id)->get();
         $atteances = $query->with('attendanceStore')->first();
-        // dd($atteances->attendanceStore->pluck('admit_student_id'));
-        
         $attendedStudetID = $atteances->attendanceStore->pluck('admit_student_id')->toArray();
-        
         return view('Admin.Attendance.record', compact('subjectId','batchId','students','attendedStudetID'));
     }
 
@@ -116,22 +113,19 @@ class AttendanceController extends Controller
 
         
         $query = Attendance::query();
-        if($request->subject_id){
-            $query->where('subject_id',$request->subject_id);    
-        }
-        if($request->date){
-            $query->where('date',$request->date);
-        }
-        if($request->batch_id){
-            $query->where('batch_number_id',$request->batch_id);
-        }
+            if($request->subject_id){
+                $query->where('subject_id',$request->subject_id);    
+            }
+            if($request->date){
+                $query->where('date',$request->date);
+            }
+            if($request->batch_id){
+                $query->where('batch_number_id',$request->batch_id);
+            }
 
         $students = AdmitStudent::where('batch_number', $request->batch_id)->get();
         $atteances = $query->with('attendanceStore')->first();
-        // dd($atteances->attendanceStore->pluck('admit_student_id'));
-        
         $attendedStudetID = $atteances->attendanceStore->pluck('admit_student_id')->toArray();
-        //dd($attendedStudetID);
         return view('Admin.Attendance.record',compact('atteances','students','attendedStudetID','subjectId','batchId'));
     }
 }

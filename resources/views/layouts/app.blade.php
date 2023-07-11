@@ -121,6 +121,12 @@
                                 <div class="menu__title"> Attendance </div>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('attendance.record.check') }}" class="menu menu--active">
+                                <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="menu__title"> Check Attendance </div>
+                            </a>
+                        </li>
                         
                     </ul>
                 </li>
@@ -260,6 +266,12 @@
                                 <a href="{{ route('present.students') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                     <div class="side-menu__title"> Attendance </div>
+                                </a>
+                            </li>
+                        <li>
+                                <a href="{{ route('attendance.record.check') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="side-menu__title"> Check Attendance </div>
                                 </a>
                             </li>
                         </ul>

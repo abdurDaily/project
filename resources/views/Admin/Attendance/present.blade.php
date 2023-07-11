@@ -49,7 +49,7 @@
                                     <input name="check_id" type="hidden" value="{{ isset(request()->batch_id) ? request()->batch_id : '' }}">
                                 </div>
 
-                                <table class="table table-responsive">
+                                <table class="table table-responsive table-striped table-hover mt-5">
                                     <tr>
                                         <th>SN</th>
                                         <th>Name</th>
@@ -64,7 +64,7 @@
                                             <td>
                                                 {{ $detail->std_id }}
                                             </td>
-                                            <td>
+                                            <td style="background: #d3d1d1">
                                                 <div class="form-check form-switch">
                                                     <input name="isPresent[]" class="form-check-input" value="{{ $detail->id }}" type="checkbox" id="flexSwitchCheckDefault">
                                                   </div>
