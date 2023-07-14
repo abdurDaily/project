@@ -94,7 +94,8 @@
                                     <td>{{ $data->created_at->format('d M, Y') }} </td>
                                   <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('delete.question.column',$data->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="" id="dlt-btn"></a>
+                                        <a class="dlt-btn btn btn-sm btn-danger" href="{{ route('delete.question.column',$data->id) }}">Delete</a>
                                     </div>
                                   </td>
                                 </tr>
@@ -137,4 +138,41 @@
         <i data-feather="search" class="search__icon dark-text-gray-300"></i> 
     </form>
 </div>
+@endpush
+
+
+
+@push('niceSelect2CSS')
+<link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css
+" rel="stylesheet">
+@endpush
+@push('sweetAleart2')
+@include('sweetalert::alert')
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.all.min.js
+"></script>
+
+<script>
+
+    $('.dlt-btn').on('click',function(e){
+
+        e.preventDefault();
+        
+        Swal.fire({
+        title: 'Are you sure?',
+        text: "all record relevent this subject will be deleted",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = $(this).attr('href')
+        }
+        })
+    })
+</script>
 @endpush

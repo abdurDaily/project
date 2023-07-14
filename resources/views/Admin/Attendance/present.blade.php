@@ -14,7 +14,7 @@
                                     @csrf 
                                     <div class="row input-group mx-auto">
                                         <div class="col-9 mt-1">
-                                            <select name="batch_id" id="batch_id" class="form-control">
+                                            <select required name="batch_id" id="batch_id" class="form-control">
                                                 @foreach ($result as $data )
                                                     <option value="{{ $data->id }}">{{ $data->batch_no }}</option>
                                                 @endforeach
@@ -34,13 +34,16 @@
                                @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input name="date" type="date" class="form-control">
+                                    <input required name="date" type="date" class="form-control">
+                                    @error('date')
+                                        <div class="alert alert-danger"><strong>{{ $message }}</strong></div>
+                                    @enderror
                                 </div>
 
 
                                 <div class="col-md-6">
                                     <label for="subject_id" class="mt-3">Select a Batch No</label>
-                                    <select name="subject_id" id="subject_id" class="form-control">
+                                    <select required name="subject_id" id="subject_id" class="form-control">
                                         <option  value="" selected disabled>Select a batch</option>
                                         @foreach ($subjectId as $subjectData)
                                             <option value="{{ $subjectData->id }}">{{ $subjectData->subject_name }}</option>
@@ -64,11 +67,10 @@
                                             <td>
                                                 {{ $detail->std_id }}
                                             </td>
-                                            <td style="background: #d3d1d1">
+                                            <td>
                                                 <div class="form-check form-switch">
-                                                    <input name="isPresent[]" class="form-check-input" value="{{ $detail->id }}" type="checkbox" id="flexSwitchCheckDefault">
-                                                  </div>
-                                                
+                                                    <input name="isPresent[]" class="form-check-input"  value="{{ $detail->id }}" type="checkbox" id="flexSwitchCheckDefault">
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty       

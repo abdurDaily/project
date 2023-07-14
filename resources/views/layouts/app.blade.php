@@ -411,6 +411,7 @@
           @stack('ckeditor')
           @stack('ajax')
           @stack('niceSelect2')
+          @stack('sweetAleart2')
         <script src="{{ asset('dist/js/app.js') }}"></script>
 
         <!-- END: JS Assets-->
