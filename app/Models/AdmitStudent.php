@@ -13,5 +13,11 @@ class AdmitStudent extends Model
     public function bathNo(){
         return $this->belongsTo(Batch_number::class);
     }
+
+
+    //* ATTENDENCE
+    function myAttendence() {
+        return $this->hasMany(AttendanceStore::class);
+    }
     
 }

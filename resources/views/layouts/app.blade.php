@@ -122,7 +122,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('attendance.record.check') }}" class="menu menu--active">
+                            <a href="{{ route('all.attendance.record') }}" class="menu menu--active">
                                 <div class="menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="menu__title"> Check Attendance </div>
                             </a>
@@ -269,7 +269,7 @@
                                 </a>
                             </li>
                         <li>
-                                <a href="{{ route('attendance.record.check') }}" class="side-menu">
+                                <a href="{{ route('all.attendance.record') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                     <div class="side-menu__title"> Check Attendance </div>
                                 </a>

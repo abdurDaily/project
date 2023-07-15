@@ -11,9 +11,7 @@ Route::group(['prefix' => '/attendance'],function(){
   Route::get('/present-student', [AttendanceController::class, 'presentStudents'])->name('present.students');
   Route::get('/check-student', [AttendanceController::class, 'checkPresent'])->name('check.present');
   Route::post('/submit-attendance', [AttendanceController::class, 'submitAttendance'])->name('present.submit');
-  Route::get('/attendance-record', [AttendanceController::class, 'attendanceRecord'])->name('attendance.record');
   Route::get('/attendance-record-check', [AttendanceController::class, 'attendanceRecordCheck'])->name('attendance.record.check');
-  Route::get('/all-attendance', [AttendanceController::class, 'allAttendance'])->name('all.attendance');
   Route::get('/all-attendance-record', [AttendanceController::class, 'allAttendanceRecord'])->name('all.attendance.record');
 })->middleware('check');
 

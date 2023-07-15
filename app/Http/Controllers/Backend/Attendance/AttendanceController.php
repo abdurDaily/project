@@ -11,6 +11,7 @@ use App\Models\AttendanceStore;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Bus\Batch;
 use SebastianBergmann\CodeCoverage\Report\Xml\Unit;
 
 class AttendanceController extends Controller
@@ -97,8 +98,7 @@ class AttendanceController extends Controller
         
         $subjectId = Subject::all();
         $batchId = Batch_number::all();
-        $subjectId = Subject::all();
-        $batchId = Batch_number::all();
+
         
         
         $query = Attendance::query();
@@ -120,49 +120,32 @@ class AttendanceController extends Controller
     }
 
 
-    public function attendanceRecordCheck(Request $request){
-        
-        $data = AttendanceStore::pluck('admit_student_id');
-
-        $sum = 0;
-
-        foreach ($data as $value) {
-            $sum += $value;
-        }
-        dd($sum);
-        $subjectId = Subject::all();
-        $batchId = Batch_number::all();
-
-        
-        $query = Attendance::query();
-            if($request->subject_id){
-                $query->where('subject_id',$request->subject_id);    
-            }
-            if($request->date){
-                $query->where('date',$request->date);
-            }
-            if($request->batch_id){
-                $query->where('batch_number_id',$request->batch_id);
-            }
-
-        $students = AdmitStudent::where('batch_number', $request->batch_id)->get();
-        $atteances = $query->with('attendanceStore')->first();
-        $attendedStudetID = $atteances->attendanceStore->pluck('admit_student_id')->toArray();
-        return view('Admin.Attendance.record',compact('atteances','students','attendedStudetID','subjectId','batchId'));
-    }
-
-
 
     /**
      * ALL-ATTENDANCE
     */
-    public function allAttendance(Request $request){
-        $attendenceRecords = Attendance::select('batch_number_id')->get();
-        $attendanceStore = AttendanceStore::select('admit_student_id')->get();
-        return view('Admin.Attendance.allRecord',compact('attendenceRecords','attendanceStore','atteances','students','attendedStudetID','subjectId','batchId'));
+    public function allAttendanceRecord(Request $request){
+        
+        $batchId = Batch_number::all();
+        $subjectId = Subject::all();
+        if($request->batch_id && $request->subject_id){
+            $batchWithStudent= Batch_number::with(["admitStd"=> function($q) use ($request){
+                $q->withCount(['myAttendence'=> function($query) use ($request){
+                $query->whereHas("attendance", function($query2) use ($request){
+                    $query2->where('subject_id', $request->subject_id);
+                });
+                }]);
+            }])->find($request->batch_id);
+            
+            $students = $batchWithStudent->admitStd;
+            $totalAttendence = Attendance::count();
+        
+        // dd($students);
+            return view('Admin.Attendance.allRecord', compact('students', 'totalAttendence','subjectId','batchId'));
     }
-    
+    return view('Admin.Attendance.allRecord', compact('subjectId','batchId'));
+        
+    }
 
-    public function allAttendanceRecord(){
-    }
+  
 }

@@ -11,6 +11,6 @@ class Batch_number extends Model
     
     //* RELATION BETWEEN BATCH_NO WITH ADMIT_STUDENT TABLE
     public function admitStd(){
-        return $this->hasMany(AdmitStudent::class);
+        return $this->hasMany(AdmitStudent::class, "batch_number");
     }
 }

@@ -21,30 +21,41 @@
             <div class="col-xl-9 col-lg-8">
                 <div class="blog-all-wrap mr-40">
                     <div class="row">
+                        
+                        @forelse ($blogDetails as $detail)
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="single-blog mb-30">
                                 <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{ asset('assets/img/blog/blog-5.jpg') }}" alt=""></a>
+                                    <a href="blog-details.html"><img src="{!! asset('storage/blog/'.$detail->image) !!}" alt=""></a>
                                 </div>
                                 <div class="blog-content-wrap">
-                                    <span>Education</span>
+                                    {{-- <span>{{ $detail->blog_category }}</span> --}}
                                     <div class="blog-content">
-                                        <h4><a href="blog-details.html">Testing is a great thing.</a></h4>
-                                        <p>doloremque laudan tium, totam ersps uns iste natus</p>
+                                        <h4><a href="blog-details.html">{{ Str::limit($detail->title,15) }}</a></h4>
+                                        <p>{!! $detail->editor !!}</p>
                                         <div class="blog-meta">
                                             <ul>
-                                                <li><a href="blog.html#"><i class="fa fa-user"></i>Apparel</a></li>
+                                                <li><a href="blog.html#"><i class="fa fa-user"></i>{{ $detail->author }}</a></li>
                                                 <li><a href="blog.html#"><i class="fa fa-comments-o"></i> 10</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="blog-date">
-                                        <a href="blog.html#"><i class="fa fa-calendar-o"></i> June, 24th 2017</a>
+                                        <a href="blog.html#"><i class="fa fa-calendar-o"></i> {{ $detail->created_at->format('d-M-Y H:i:s') }}</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @empty
+                            <h1>No Blog Post Found</h1>
+                        @endforelse
+
+
+
+                        
                     </div>
+
+                    {{ $blogDetails->links() }}
                     <div class="pro-pagination-style text-center mt-25">
                         <ul>
                             <li><a class="prev" href="blog.html#"><i class="fa fa-angle-double-left"></i></a></li>

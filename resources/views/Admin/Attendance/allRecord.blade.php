@@ -43,6 +43,36 @@
                         
                             <button class="btn btn-primary w-100 mt-5">Submit</button>
                          </form>
+
+
+                         <table class="table table-responsive table-hover table-striped">
+                            <tr>
+                                <td>#</td>
+                                <td>Student id</td>
+                                <td>Student name</td>
+                                <td>Percentage</td>
+                            </tr>
+                            @if (isset($students))
+                                
+                          
+                            @foreach ($students as $key=>$student)
+                                
+                            <tr>
+                                <td>{{ ++$key }}</td>
+                                <td>{{ $student->std_id }}</td>
+                                <td>
+                                    {{ $student->std_name }}
+                                </td>
+                                <td>
+                                    {{ round(($student->my_attendence_count / $totalAttendence) * 100) . '%' }}
+                                </td>
+                            </tr>
+                            @endforeach
+                            @endif
+
+
+                         </table>
+
                     </div>
                 </div>
             </div>
