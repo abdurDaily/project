@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class AdmitStudent extends Model
 {
     use HasFactory;
-    
     //* RELATION BETWEEN ADMIT_STUDENT WITH BATCH_NO TABLE
     public function bathNo(){
         return $this->belongsTo(Batch_number::class);
@@ -19,5 +18,4 @@ class AdmitStudent extends Model
     function myAttendence() {
         return $this->hasMany(AttendanceStore::class);
     }
-    
 }

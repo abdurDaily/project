@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Backend\Attendance;
 
 use App\Models\Subject;
+use Illuminate\Bus\Batch;
 use App\Models\Attendance;
 use App\Models\AdmitStudent;
 use App\Models\Batch_number;
 use Illuminate\Http\Request;
 use App\Models\AttendanceStore;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use Illuminate\Bus\Batch;
 use SebastianBergmann\CodeCoverage\Report\Xml\Unit;
 
 class AttendanceController extends Controller
@@ -98,9 +99,6 @@ class AttendanceController extends Controller
         
         $subjectId = Subject::all();
         $batchId = Batch_number::all();
-
-        
-        
         $query = Attendance::query();
         
         if($request->subject_id){
@@ -147,5 +145,38 @@ class AttendanceController extends Controller
         
     }
 
-  
+
+    /**ATTENDANCE PDF  */
+    public function attendancePdf()
+    {
+        $batchId = Batch_number::all();
+        $subjectId = Subject::all();
+        return view('Admin.Attendance.attendancePdf',compact('batchId','subjectId'));
+    }
+
+    public function attendancePdfData(Request $request){
+        $batchId = Batch_number::all();
+        $subjectId = Subject::all();
+        if($request->batch_id && $request->subject_id){
+            $batchWithStudent= Batch_number::with(["admitStd"=> function($q) use ($request){
+                $q->withCount(['myAttendence'=> function($query) use ($request){
+                $query->whereHas("attendance", function($query2) use ($request){
+                    $query2->where('subject_id', $request->subject_id);
+                });
+
+                }]);
+            }])->find($request->batch_id);
+            
+            $students = $batchWithStudent->admitStd;
+            $totalAttendence = Attendance::count();
+        
+        // $pdf = Pdf::loadView('Admin.Attendance.attendancePdfData',compact('students', 'totalAttendence','subjectId','batchId'));
+        // return $pdf->stream('billing-invoice.pdf');
+
+          return PDF::loadView('Admin.Attendance.attendancePdfData', compact('students', 'totalAttendence','subjectId','batchId'))->setPaper('A4')->setOrientation('portrait')->stream();
+    }
+        // $pdf = Pdf::loadView('Admin.Attendance.attendancePdfData',compact('subjectId','batchId'));
+        // return $pdf->stream('billing-invoice.pdf');
+    }
 }
+  

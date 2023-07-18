@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     @stack('frontEndCSS')
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}">
     
     <!-- CSS
 	============================================ -->
@@ -143,9 +143,9 @@
                                         </ul>
                                     </li>
                                     <li><a href="course.html"> COURSES / PROGRAMMES</a></li>
-                                    <li><a href="blog.html"> BLOG </a>
+                                    <li><a href="{{ route('blog.index') }}"> BLOG </a>
                                         <ul class="submenu">
-                                            <li><a href="blog.html">blog</a></li>
+                                            <li><a href="{{ route('blog.index') }}">blog</a></li>
                                             <li><a href="blog-details.html">blog details</a></li>
                                         </ul>
                                     </li>
@@ -286,9 +286,9 @@
                                 </ul>
                             </li>
                             <li><a href="about-us.html">About us</a></li>
-                            <li><a href="blog.html">Blog</a>
+                            <li><a href="{{ route('blog.index') }}">Blog</a>
                                 <ul>
-                                    <li><a href="blog.html">blog</a></li>
+                                    <li><a href="{{ route('blog.index') }}">blog</a></li>
                                     <li><a href="blog-details.html">blog details</a></li>
                                 </ul>
                             </li>

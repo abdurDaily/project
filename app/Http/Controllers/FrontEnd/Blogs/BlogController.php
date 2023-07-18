@@ -15,16 +15,18 @@ class BlogController extends Controller
    /*
        ********************** FRONTEND **************
    */
+  
     //** BLOG INDEX
-    
     public function index(){
-      
-        $blogDetails = BlogCategory::with('SubBlog')->latest()->paginate(3);
-      //  dd($blogDetails);
-        
-        return view('FrontEnd.Blogs.index',compact('blogDetails'));
+       $blogDetails = BlogSubCategory::with('CategoryBlog')->latest()->paginate(6);
+       $blogResent = BlogSubCategory::with('CategoryBlog')->latest()->paginate(3);
+       return view('FrontEnd.Blogs.index',compact('blogDetails','blogResent'));
     }
-
+    //**BLOG DETAILS */
+    public function postDetails($slug){
+      $blogDetail = BlogSubCategory::where('slug', $slug)->with('CategoryBlog')->first();
+      return view('FrontEnd.Blogs.blogDetail',compact('blogDetail'));
+    }
 
 
 
@@ -67,25 +69,27 @@ class BlogController extends Controller
   
   /** SUB CATEGORY */
   public function subCategory(){
-    $blogCategory = BlogCategory::with('SubBlog')->get();
-   // dd($blogCategory);
+    $blogCategory = BlogCategory::all();
     return view('Admin.Blogs.subCategory',compact('blogCategory'));
   }
   /**INSER SUB CATEGORY DATA */
   public function subCategoryInsert(Request $request){
     $request->validate([
         'title' => 'required',
-        'image' => 'required|dimensions:width=260,height=200',
+        'image' => 'required',
         'category' => 'required',
-        'editor' => 'required',
+        'blog_details_one' => 'required',
+        'highlight_text' => 'required',
+        'blog_details_two' => 'required',
     ],[
-      'image.dimensions' => 'image size have to be 260px ,200px ',
+      // 'image.dimensions' => 'image size have to be 260px ,200px ',
     ]);
 
     
     
     $subCategory = new BlogSubCategory();
     $subCategory->title = $request->title;
+    $subCategory->slug = uniqid(Str::slug($request->title));
     
     if ($request->file('image')) {
         $image = $request->file('image');
@@ -97,8 +101,11 @@ class BlogController extends Controller
       
     $subCategory->author = Auth::user()->name;
     $subCategory->blog_categorie_id = $request->category;
-    $subCategory->editor = $request->editor;
     $subCategory->title = $request->title;
+    $subCategory->blog_details_one = $request->blog_details_one;
+    $subCategory->highlight_text = $request->highlight_text;
+    $subCategory->blog_details_two = $request->blog_details_two;
+    $subCategory->video = $request->video;
     $subCategory->save();
     return back();
   }

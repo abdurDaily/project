@@ -1,7 +1,7 @@
 @extends('FrontEnd.layout.app')
 @section('frontEnd-layour')
 <div class="breadcrumb-area">
-    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-3 pt-100 pb-95" style="background-image:url({{ asset('assets/img/bg/breadcrumb-bg-5.jpg') }});">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-3 pt-100 pb-95" style="background-image:url({{ asset('assets/img/bg/bg-4.jpg') }});">
         <div class="container">
             <h2>Blog Grid</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .</p>
@@ -21,49 +21,42 @@
             <div class="col-xl-9 col-lg-8">
                 <div class="blog-all-wrap mr-40">
                     <div class="row">
-                        
-                        @forelse ($blogDetails as $detail)
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="single-blog mb-30">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{!! asset('storage/blog/'.$detail->image) !!}" alt=""></a>
-                                </div>
-                                <div class="blog-content-wrap">
-                                    {{-- <span>{{ $detail->blog_category }}</span> --}}
-                                    <div class="blog-content">
-                                        <h4><a href="blog-details.html">{{ Str::limit($detail->title,15) }}</a></h4>
-                                        <p>{!! $detail->editor !!}</p>
-                                        <div class="blog-meta">
-                                            <ul>
-                                                <li><a href="blog.html#"><i class="fa fa-user"></i>{{ $detail->author }}</a></li>
-                                                <li><a href="blog.html#"><i class="fa fa-comments-o"></i> 10</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="blog-date">
-                                        <a href="blog.html#"><i class="fa fa-calendar-o"></i> {{ $detail->created_at->format('d-M-Y H:i:s') }}</a>
+       
+                    @forelse ($blogDetails as $data)
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="single-blog mb-30">
+                            <div class="blog-img">
+                                <a href="blog-details.html"><img style="width: 260px;height:202px; background-position: center;" src="{!! asset('storage/blog/'.$data->image) !!}" alt=""></a>
+                            </div>
+                            <div class="blog-content-wrap">
+                                <span>{{ Str::limit($data->CategoryBlog->title,25) }}</span>
+                                <div class="blog-content">
+                                    <h4><a href="{{ route('blog.detail',$data->slug) }}">{{ Str::limit($data->title,30) }}</a></h4>
+                                    <p>{!! Str::limit($data->editor,100) !!}</p>
+                                    <div class="blog-meta">
+                                        <ul>
+                                            <li><a href="blog.html#"><i class="fa fa-user"></i>{{ $data->author }}</a></li>
+                                            <li><a href="blog.html#"><i class="fa fa-comments-o"></i> 10</a></li>
+                                        </ul>
                                     </div>
                                 </div>
+                                {{-- <div class="blog-date">
+                                    <a href="blog.html#"><i class="fa fa-calendar-o"></i> {{ $detail->created_at->format('d-M-Y H:i:s') }}</a>
+                                </div> --}}
                             </div>
                         </div>
-                        @empty
-                            <h1>No Blog Post Found</h1>
-                        @endforelse
-
-
-
-                        
                     </div>
-
-                    {{ $blogDetails->links() }}
-                    <div class="pro-pagination-style text-center mt-25">
-                        <ul>
-                            <li><a class="prev" href="blog.html#"><i class="fa fa-angle-double-left"></i></a></li>
-                            <li><a class="active" href="blog.html#">1</a></li>
-                            <li><a href="blog.html#">2</a></li>
-                            <li><a class="next" href="blog.html#"><i class="fa fa-angle-double-right"></i></a></li>
-                        </ul>
+                    @empty
+                        <h2>No Data Found</h2>
+                    @endforelse
+                    <div class="row">
+                        <div class="col-6 mx-auto">
+                            {{ $blogDetails->links() }}
+                        </div>
                     </div>
+                    </div>
+                   
+
                 </div>
             </div>
             <div class="col-xl-3 col-lg-4">
@@ -94,29 +87,25 @@
                     </div>
                     <div class="sidebar-recent-post mb-35">
                         <div class="sidebar-title mb-40">
-                            <h4>Recent Post</h4>
+                            <h4>Recent Post's</h4>
                         </div>
                         <div class="recent-post-wrap">
+                            @forelse ($blogResent as $data)
                             <div class="single-recent-post">
                                 <div class="recent-post-img">
-                                    <a href="blog.html#"><img src="assets/img/blog/recent-post-1.jpg" alt=""></a>
+                                    <a href="blog.html#"><img src="{!! asset('storage/blog/'.$data->image) !!}" alt=""></a>
                                 </div>
                                 <div class="recent-post-content">
-                                    <h5><a href="blog.html#">Blog title will be here.</a></h5>
-                                    <span>Blog Category</span>
-                                    <p>Datat non proident qui offici.hafw adec qart.</p>
+                                    <h5><a href="{{ route('blog.detail',$data->slug) }}">{{ Str::limit($data->title,30) }}</a></h5>
+                                    <span>{{ Str::limit($data->CategoryBlog->title,20) }} | {{ $data->created_at->format('d-M-Y') }}</span>
+                                    <p>{!! Str::limit($data->editor,30) !!}</p>
                                 </div>
                             </div>
-                            <div class="single-recent-post">
-                                <div class="recent-post-img">
-                                    <a href="blog.html#"><img src="assets/img/blog/recent-post-2.jpg" alt=""></a>
-                                </div>
-                                <div class="recent-post-content">
-                                    <h5><a href="blog.html#">Blog title will be here.</a></h5>
-                                    <span>Blog Category</span>
-                                    <p>Datat non proident qui offici.hafw adec qart.</p>
-                                </div>
-                            </div>
+                            @empty
+                              <h2>No Data Found</h2>
+                            @endforelse
+
+                            
                         </div>
                     </div>
                     <div class="sidebar-category mb-40">

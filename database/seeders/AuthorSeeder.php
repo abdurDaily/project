@@ -17,7 +17,7 @@ class AuthorSeeder extends Seeder
     public function run()
     {
         $user = new User();
-        $user->name = 'abdur';
+        $user->name = 'Abdur Rahman';
         $user->email = 'rahmansohel155@gmail.com';
         $user->password = Hash::make('password');
         $user->status = 1;

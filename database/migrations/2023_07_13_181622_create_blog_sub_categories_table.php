@@ -16,10 +16,14 @@ return new class extends Migration
         Schema::create('blog_sub_categories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->string('author');
             $table->string('image')->nullable();
             $table->foreignId('blog_categorie_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->longText('editor');
+            $table->longText('blog_details_one');
+            $table->longText('highlight_text');
+            $table->longText('blog_details_two');
+            $table->string('video')->nullable();
             $table->timestamps();
         });
     }

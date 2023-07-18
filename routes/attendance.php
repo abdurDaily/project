@@ -13,6 +13,8 @@ Route::group(['prefix' => '/attendance'],function(){
   Route::post('/submit-attendance', [AttendanceController::class, 'submitAttendance'])->name('present.submit');
   Route::get('/attendance-record-check', [AttendanceController::class, 'attendanceRecordCheck'])->name('attendance.record.check');
   Route::get('/all-attendance-record', [AttendanceController::class, 'allAttendanceRecord'])->name('all.attendance.record');
+  Route::get('/attendance-pdf', [AttendanceController::class, 'attendancePdf'])->name('attendance.pdf');
+  Route::get('/attendance-pdf-data', [AttendanceController::class, 'attendancePdfData'])->name('attendance.pdf.data');
 })->middleware('check');
 
 

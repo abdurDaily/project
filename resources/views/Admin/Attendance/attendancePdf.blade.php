@@ -5,11 +5,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header py-4" style="background: #1a047c; color:#fff;">
-                        <h1>All Record</h1>
+                        <h1>Attendance Search For PDF</h1>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('all.attendance.record') }}" method="GET">
+                        <form action="{{ route('attendance.pdf.data') }}" method="GET">
                             @csrf 
         
                             <div class="row">
@@ -43,36 +43,6 @@
                         
                             <button class="btn btn-primary w-100 mt-5">Submit</button>
                          </form>
-
-
-                         <table class="table table-responsive table-hover table-striped">
-                            <tr>
-                                <td>#</td>
-                                <td>Student id</td>
-                                <td>Student name</td>
-                                <td>Percentage</td>
-                            </tr>
-                            @if (isset($students))
-                                
-                          
-                            @foreach ($students as $key=>$student)
-                                
-                            <tr>
-                                <td>{{ ++$key }}</td>
-                                <td>{{ $student->std_id }}</td>
-                                <td>
-                                    {{ $student->std_name }}
-                                </td>
-                                <td>
-                                    {{ round(($student->my_attendence_count / $totalAttendence) * 100) . '%' }}
-                                </td>
-                            </tr>
-                            @endforeach
-                            @endif
-
-
-                         </table>
-
                     </div>
                 </div>
             </div>

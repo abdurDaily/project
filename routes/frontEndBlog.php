@@ -9,6 +9,7 @@ use App\Http\Controllers\FrontEnd\Blogs\BlogController;
  */
 Route::group(['prefix' => '/blogs'],function(){
     Route::get('/index', [BlogController::class, 'index'])->name('blog.index');
+    Route::get('/post-details/{slug}', [BlogController::class, 'postDetails'])->name('blog.detail');
 });
 
 /**
