@@ -26,7 +26,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="single-blog mb-30">
                             <div class="blog-img">
-                                <a href="blog-details.html"><img style="width: 260px;height:202px; background-position: center;" src="{!! asset('storage/blog/'.$data->image) !!}" alt=""></a>
+                                <a href="blog-details.html"><img style="width: 260px;height:202px; background-position: center;" src="{{ $data->image }}" alt=""></a>
                             </div>
                             <div class="blog-content-wrap">
                                 <span>{{ Str::limit($data->CategoryBlog->title,25) }}</span>

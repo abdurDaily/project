@@ -24,7 +24,7 @@
             <div class="col-xl-9 col-lg-8">
                 <div class="blog-details-wrap mr-40">
                     <div class="blog-details-top">
-                        <img style="background-position:center;" src="{!! asset('storage/blog/'.$blogDetail->image) !!}" alt="">
+                        <img style="background-position:center;" src="{!! $blogDetail->image !!}" alt="">
                         <div class="blog-details-content-wrap">
                             <div class="b-details-meta-wrap">
                                 <div class="b-details-meta">
@@ -47,8 +47,10 @@
 
 
 
+                            @if(isset($blogDetail->video))
                             <div class="video">
                                 @php
+
                                     // dd($blogDetail->video);
                                     $youtubeLink = $blogDetail->video;
 
@@ -63,9 +65,11 @@
 
                                     // YouTube embed URL
                                     $embedURL = "https://www.youtube.com/embed/{$videoID}";
-                                @endphp
+                             
+                                    @endphp
                                 <iframe width="560" height="315" src="{!! $embedURL !!}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             </div>
+                            @endif
                             <div class="blog-share-tags">
                                 <div class="blog-share">
                                     <div class="blog-btn">

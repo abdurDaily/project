@@ -127,10 +127,38 @@
                                 <div class="menu__title"> Check Attendance </div>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('attendance.pdf') }}" class="menu menu--active">
+                                <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="menu__title"> PDF Attendance </div>
+                            </a>
+                        </li>
                         
                     </ul>
                 </li>
 
+
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-feather="box"></i> </div>
+                        <div class="menu__title"> Blog's  <i data-feather="chevron-down" class="menu__sub-icon "></i> </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('category.insert') }}" class="menu menu--active">
+                                <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="menu__title"> Add New Category </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('subcategory.insert') }}" class="menu menu--active">
+                                <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="menu__title"> Blog Details </div>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
                 @endhasanyrole
 
 
@@ -272,6 +300,35 @@
                                 <a href="{{ route('all.attendance.record') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                     <div class="side-menu__title"> Check Attendance </div>
+                                </a>
+                            </li>
+                        <li>
+                                <a href="{{ route('attendance.pdf') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="side-menu__title"> PDF Attendance </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;.html" class="side-menu">
+                            <div class="side-menu__icon"> <i data-feather="box"></i> </div>
+                            <div class="side-menu__title">
+                                Blog's
+                                <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('category.insert') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="side-menu__title"> Add New Category</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('subcategory.insert') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="side-menu__title">Blog Details</div>
                                 </a>
                             </li>
                         </ul>

@@ -16,6 +16,13 @@
                         @error('batch_no')
                            <strong class="text-danger">{{ $message }}</strong>
                         @enderror
+
+                        @if ($message = Session::get('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                           <strong>{{ $message }}</strong>
+                        </div>
+                        @endif 
+                        
                         <button class="btn btn-primary w-100 mt-3">Upload</button>
                     </form>
                 </div>

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->longText('blog_details_one');
             $table->longText('highlight_text');
             $table->longText('blog_details_two');
-            $table->string('video')->nullable();
+            $table->string('video')->default('https://www.youtube.com/watch?v=SyPqRvXY0R4');
             $table->timestamps();
         });
     }

@@ -57,10 +57,11 @@ class BlogController extends Controller
    
    /** CATEGORY INSERT DATA */
   public function categoryInsert(Request $request){
+    
     $request->validate([
         'category' => 'required|unique:blog_categories,title',
     ]);
-
+  // dd($request->all());
     $blogCategory = new BlogCategory();
     $blogCategory->title = Str::slug($request->category);
     $blogCategory->save();
@@ -105,7 +106,9 @@ class BlogController extends Controller
     $subCategory->blog_details_one = $request->blog_details_one;
     $subCategory->highlight_text = $request->highlight_text;
     $subCategory->blog_details_two = $request->blog_details_two;
-    $subCategory->video = $request->video;
+    if($request->video){
+      $subCategory->video = $request->video;
+    }
     $subCategory->save();
     return back();
   }

@@ -13,4 +13,8 @@ class Batch_number extends Model
     public function admitStd(){
         return $this->hasMany(AdmitStudent::class, "batch_number");
     }
+
+    public function Subjects(){
+        return $this->hasMany(Subject::class);
+    }
 }

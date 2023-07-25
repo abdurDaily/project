@@ -1,169 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <style>
-    body{
-background:#eee;
-margin-top:20px;
-}
-.text-danger strong {
-        	color: #9f181c;
-		}
-		.receipt-main {
-			background: #ffffff none repeat scroll 0 0;
-			border-bottom: 12px solid #333333;
-			border-top: 12px solid #9f181c;
-			margin-top: 50px;
-			margin-bottom: 50px;
-			padding: 40px 46px !important;
-			position: relative;
-			box-shadow: 0 1px 21px #acacac;
-			color: #333333;
-			font-family: open sans;
-		}
-		.receipt-main p {
-			color: #333333;
-			font-family: open sans;
-			line-height: 1.42857;
-		}
-		.receipt-footer h1 {
-			font-size: 15px;
-			font-weight: 400 !important;
-			margin: 0 !important;
-		}
-		.receipt-main::after {
-			background: #414143 none repeat scroll 0 0;
-			content: "";
-			height: 5px;
-			left: 0;
-			position: absolute;
-			right: 0;
-			top: -13px;
-		}
-		.receipt-main thead {
-			background: #414143 none repeat scroll 0 0;
-		}
-		.receipt-main thead th {
-			color:#fff;
-		}
-		.receipt-right h5 {
-			font-size: 16px;
-			font-weight: bold;
-			margin: 0 0 7px 0;
-		}
-		.receipt-right p {
-			font-size: 12px;
-			margin: 0px;
-		}
-		.receipt-right p i {
-			text-align: center;
-			width: 18px;
-		}
-		.receipt-main td {
-			padding: 9px 20px !important;
-		}
-		.receipt-main th {
-			padding: 13px 20px !important;
-		}
-		.receipt-main td {
-			font-size: 13px;
-			font-weight: initial !important;
-		}
-		.receipt-main td p:last-child {
-			margin: 0;
-			padding: 0;
-		}	
-		.receipt-main td h2 {
-			font-size: 20px;
-			font-weight: 900;
-			margin: 0;
-			text-transform: uppercase;
-		}
-		.receipt-header-mid .receipt-left h1 {
-			font-weight: 100;
-			margin: 34px 0 0;
-			text-align: right;
-			text-transform: uppercase;
-		}
-		.receipt-header-mid {
-			margin: 24px 0;
-			overflow: hidden;
-		}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+	<title>Attendance Record</title>
+	<style>
 		
-		#container {
-			background-color: #dcdcdc;
-		}
-  </style>
+			.even-row {
+				background-color: #f2f2f2; /* Set the color for even rows */
+			}
+
+			.odd-row {
+				background-color: #ffffff; /* Set the color for odd rows */
+			}
+    
+	</style>
 </head>
 <body>
+	<div class="row mb-3" style="display:flex;">
+		<img style="width: 100px;" src="{{ public_path('custom_images/iiuc-logo.png') }}" alt="">
+		
+		<div class="contents" style="text-align:right; display:flex; margin-top:-100px; width:400px; margin-left:300px;">
+			<span>International Islamic University Chittagong(IIUC)</span> <br>
+			<span>Electronic & Telecommunication Engineering(ETE)</span> <br>
+			<span><strong>Sunject Name :</strong> {{ $SubjectName->subject_name }}</span> <br>
+			<span> <strong>Batch No :</strong> {{ $batchWithStudent->batch_no }}</span> <br>
+			<span><strong>Download Date :</strong> {{ $batchWithStudent->created_at->format('Y-M-d'); }}</span>
+		</div>
 
+	</div>
+	<table class="table table-responsive bg-info">
+		<tr style="background: rgb(92, 92, 94);text-align:center;">
+			<td style="color:#fff; font-weight:bold; padding:10px;">SN</td>
+			<td style="color:#fff; font-weight:bold; padding:10px;">Student id</td>
+			<td style="color:#fff; font-weight:bold; padding:10px;">Student name</td>
+			<td style="color:#fff; font-weight:bold; padding:10px;">Percentage</td>
+		</tr>
+		@if (isset($students))
+			
+	  
+		@foreach ($students as $key=>$student)
+			@php
+				$isEven = $key % 2 === 0;
+			@endphp
+		<tr class="{{ $isEven ? 'even-row' : 'odd-row' }}" style="text-align:center;">
 
-  
-  <div class="col-md-12">
-    
-    <div class="row">  
-           <div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-            <div style="display: inline-block; width:55%;">
-              {{-- {!!  QrCode::size(100)->generate(Request::url());  !!} --}}
-              <br>
-                  <img style="width: 80px;" src="{{ public_path('custom_images/iiuc-logo.png') }}" alt="">
-              <br>
-          
-              <span><strong>Name : </strong> {{ Auth::user()->name }}</span><br>
-              <span><strong>Email :</strong> {{ Auth::user()->email }} </span><br>
-              <span><strong>Date : </strong>{{ date('Y-M-d') }} </span><br>
-            </div>
-
-            <div style="display: inline-block;">
-              
-              <h1 class="text-info">INVOICE</h1>
-              <div class="address">
-                <strong>BDvromon</strong><br>
-                <span>bdvromon@gmail.com</span><br>
-                <span>chawkbazar,chittagong,bangladesh</span>
-              </div>
-          </div>
-   
-
-          <table class="table table-responsive table-hover table-striped">
-            <tr>
-                <td>#</td>
-                <td>Student id</td>
-                <td>Student name</td>
-                <td>Percentage</td>
-            </tr>
-           
-
-
-         </table>
-
-         
-         <div class="row">
-           <div class="receipt-header receipt-header-mid receipt-footer">
-             <div class="col-xs-8 col-sm-8 col-md-8 text-left">
-               <div class="receipt-right">
-                <p><b>Date :</b>{{ date('Y-M-d') }} </p>
-                 <h5 style="color: rgb(140, 140, 140);">Thanks for shopping.!</h5>
-                </div>
-              </div>
-              <div class="qr-code bg-light" style="height: 100px;">
-                <img  class="float-right" src="data:image/png;base64,{{ base64_encode(QrCode::size(110)->generate(Request::url())) }}">
-              </div>
-              
-             <div class="col-xs-4 col-sm-4 col-md-4">
-
-             </div>
-           </div>
-               </div>
-               <span><strong>N.B. </strong>if total amount shows in red color, company will get money from users. on the other hend if user total amount shows red color this specific person has to pay this money to the company.</span>
-           </div>    
-     </div>
-   </div>
-
+			<td>{{ ++$key }}</td>
+			<td>{{ $student->std_id }}</td>
+			<td>
+				{{ $student->std_name }}
+			</td>
+			<td>
+				{{ round(($student->my_attendence_count / $totalAttendence) * 100) . '%' }}
+			</td>
+		</tr>
+		@endforeach
+		@endif
+	
+	
+	 </table>
 </body>
 </html>
