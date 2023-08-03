@@ -20,7 +20,7 @@ class BlogIndexSeeder extends Seeder
         $blogs->title = 'IIUC Programming Contest Challenges Developers Worldwide';
         $blogs->slug = 'Programming';
         $blogs->author = 'Abdur Rahman';
-        $blogs->image = env("APP_URL").'/custom_images/iiuc-logo.png';
+        $blogs->image = 'blog_image_1691074702.png';
         $blogs->blog_categorie_id  = 1;
         $blogs->video  = "https://www.youtube.com/watch?v=SyPqRvXY0R4";
         $blogs->highlight_text  = "Lorem ipsum dolor sit amet, conse ctetur adipi sicing elit, sed do eiusm od tempor incidi dunt ut labore et dolore magna aliqua. Ut enim fugiat nulla pariaatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit";

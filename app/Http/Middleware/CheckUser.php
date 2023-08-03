@@ -20,9 +20,12 @@ class CheckUser
         if(Auth::check()){
             if(Auth::user()->status == 0){
                 Auth::logout();
-                return redirect()->route('login')->with('error', 'please waite untill an admin approve your request.');
+                return redirect()->route('login')->with('error', 'your credentials not match');
+            }else{
+                
+                return $next($request);
             }
         }
-        return $next($request);
+        return redirect()->route('login')->with('error', 'your credentials not match');
     }
 }

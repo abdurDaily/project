@@ -59,9 +59,11 @@ class BlogController extends Controller
   public function categoryInsert(Request $request){
     
     $request->validate([
-        'category' => 'required|unique:blog_categories,title',
+        'category' => 'required',
     ]);
-  // dd($request->all());
+    if(BlogCategory::where('title',Str::slug($request->category))->exists()){
+      return redirect()->route('category.insert')->withErrors(['category' => 'this category has already tacken']);
+    }
     $blogCategory = new BlogCategory();
     $blogCategory->title = Str::slug($request->category);
     $blogCategory->save();
@@ -82,8 +84,6 @@ class BlogController extends Controller
         'blog_details_one' => 'required',
         'highlight_text' => 'required',
         'blog_details_two' => 'required',
-    ],[
-      // 'image.dimensions' => 'image size have to be 260px ,200px ',
     ]);
 
     

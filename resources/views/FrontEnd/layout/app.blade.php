@@ -63,7 +63,7 @@
                 <div class="col-lg-2 col-md-6 col-4">
                     <div class="logo">
                         <a href="index.html">
-                            <img alt="" src="assets/img/logo/logo.png">
+                            <img alt="" src="{{ asset('assets/img/logo/logo.png') }}">
                         </a>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                                             <li><a href="index-3.html">home version 3</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about-us.html"> ABOUT  </a></li>
+                                    <li><a href="{{ route('teachers.index') }}"> ABOUT  </a></li>
                                     <li class="mega-menu-position top-hover"><a href="shop.html"> SHOP <i class="fa fa-angle-down"></i> </a>
                                         <ul class="mega-menu">
                                             <li>
@@ -128,18 +128,9 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html#"> PAGES <i class="fa fa-angle-down"></i> </a>
+                                    <li><a href="{{ route('frontend.attendance.check.index') }}"> PAGES <i class="fa fa-angle-down"></i> </a>
                                         <ul class="submenu">
-                                            <li><a href="course.html">course page</a></li>
-                                            <li><a href="event.html">event page</a></li>
-                                            <li><a href="shop.html">shop page</a></li>
-                                            <li><a href="course-details.html">course details</a></li>
-                                            <li><a href="event-details.html">event details</a></li>
-                                            <li><a href="single-product.html">single product</a></li>
-                                            <li><a href="cart.html">cart page</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="wishlist.html">wishlist</a></li>
-                                            <li><a href="login-register.html">login / register</a></li>
+                                            <li><a href="{{ route('frontend.attendance.check.index') }}">Check Attendance</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="course.html"> COURSES / PROGRAMMES</a></li>
@@ -226,7 +217,7 @@
                                     <li><a href="index-3.html">home version 3</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about-us.html">About</a></li>
+                            <li><a href="{{ route('teachers.index') }}">About</a></li>
                             <li><a href="shop.html">Shop</a>
                                 <ul>
                                     <li><a href="blog.html#">Categories 01</a>
@@ -271,18 +262,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="blog.html#">Pages</a>
+                            <li><a href="{{ route('frontend.attendance.check.index') }}">Pages</a>
                                 <ul>
-                                    <li><a href="course.html">course page</a></li>
-                                    <li><a href="event.html">event page</a></li>
-                                    <li><a href="shop.html">shop page</a></li>
-                                    <li><a href="course-details.html">course details</a></li>
-                                    <li><a href="event-details.html">event details</a></li>
-                                    <li><a href="single-product.html">single product</a></li>
-                                    <li><a href="cart.html">cart page</a></li>
-                                    <li><a href="checkout.html">checkout</a></li>
-                                    <li><a href="wishlist.html">wishlist</a></li>
-                                    <li><a href="login-register.html">login / register</a></li>
+                                    <li><a href="{{ route('frontend.attendance.check.index') }}">Check Attendance</a></li>
                                 </ul>
                             </li>
                             <li><a href="about-us.html">About us</a></li>

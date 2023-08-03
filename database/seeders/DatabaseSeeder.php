@@ -27,5 +27,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SubjectSeeder::class);
         $this->call(BlogCategorySeeder::class);
         $this->call(BlogIndexSeeder::class);
+        $this->call(AddBatchNumberSeeder::class);
+        $this->call(AdmitStudentsSeeder::class);
+        $this->call(TeachersSeeder::class);
+        
     }
 }

@@ -64,7 +64,7 @@
                                     {{ $student->std_name }}
                                 </td>
                                 <td>
-                                    {{ round(($student->my_attendence_count / $totalAttendence) * 100) . '%' }}
+                                    {{ $student->my_attendence_count .'/'. $totalAttendence }}
                                 </td>
                             </tr>
                             @endforeach

@@ -4,7 +4,7 @@ use App\Http\Controllers\Backend\Question\QuestionController;
 use App\Models\Semester;
 use Illuminate\Support\Facades\Route;
 
-  Route::group(['prefix' => '/question'],function(){
+Route::middleware('check')->prefix('/question')->group(function(){
     Route::get('/', [QuestionController::class, 'questionIndex'])->name('question.index');
     Route::get('/details', [QuestionController::class, 'details'])->name('question.insert');
     Route::post('/details', [QuestionController::class, 'detailsUpload'])->name('question.upload');

@@ -47,6 +47,14 @@ class RouteServiceProvider extends ServiceProvider
                 //* FRONTEND BLOG ROUTE'S
             Route::middleware('web')
                  ->group(base_path('routes/frontEndBlog.php'));
+                 
+                //* FRONTEND BLOG ROUTE'S
+            Route::middleware('web')
+                 ->group(base_path('routes/teachers.php'));
+                 
+                //* FRONTEND ATTENSDANCE
+            Route::middleware('web')
+                 ->group(base_path('routes/frontEndAttendance.php'));
         });
     }
 

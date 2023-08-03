@@ -3,7 +3,7 @@
 use App\Http\Controllers\Backend\Attendance\AttendanceController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => '/attendance'],function(){
+Route::middleware('check')->prefix('/attendance')->group(function(){
   Route::get('/add-new-batch', [AttendanceController::class, 'addNewBatch'])->name('add.new.batch');
   Route::post('/add-new-batch', [AttendanceController::class, 'insertAddNewBatch'])->name('insert.new.batch');
   Route::get('/admit-student', [AttendanceController::class, 'admitStudent'])->name('admit.student');
@@ -16,6 +16,3 @@ Route::group(['prefix' => '/attendance'],function(){
   Route::get('/attendance-pdf', [AttendanceController::class, 'attendancePdf'])->name('attendance.pdf');
   Route::get('/attendance-pdf-data', [AttendanceController::class, 'attendancePdfData'])->name('attendance.pdf.data');
 })->middleware('check');
-
-
-?>

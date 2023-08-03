@@ -27,7 +27,7 @@ Route::get('/account/general-report', [App\Http\Controllers\HomeController::clas
 Route::get('/waite', [App\Http\Controllers\HomeController::class, 'waite'])->name('waite');
 
 
-Route::group(['prefix' => '/account'],function(){
+Route::middleware('check')->prefix('/account')->group(function(){
   /*
     * BALANCE SECTION 
   */
@@ -42,7 +42,7 @@ Route::group(['prefix' => '/account'],function(){
   */
   Route::get('/user-approve', [ApprovalController::class, 'approve'])->name('user.approve');
   Route::post('/user-approve', [ApprovalController::class, 'approveForm'])->name('approive.form');
-})->middleware('check');
+});
 
 
 

@@ -128,6 +128,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('attendance.record.check') }}" class="menu menu--active">
+                                <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="menu__title"> Check by Date </div>
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('attendance.pdf') }}" class="menu menu--active">
                                 <div class="menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="menu__title"> PDF Attendance </div>
@@ -159,6 +165,25 @@
                         
                     </ul>
                 </li>
+
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-feather="box"></i> </div>
+                        <div class="menu__title"> Teacher's  <i data-feather="chevron-down" class="menu__sub-icon "></i> </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('faculty.insert') }}" class="menu menu--active">
+                                <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="menu__title"> Add New Teacher </div>
+                            </a>
+                        </li>
+
+                        
+                    </ul>
+                </li>
+
+      
                 @endhasanyrole
 
 
@@ -303,6 +328,13 @@
                                 </a>
                             </li>
                         <li>
+                                <a href="{{ route('attendance.record.check') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="side-menu__title"> Check by Date </div>
+                                </a>
+                            </li>
+
+                        <li>
                                 <a href="{{ route('attendance.pdf') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                     <div class="side-menu__title"> PDF Attendance </div>
@@ -331,6 +363,24 @@
                                     <div class="side-menu__title">Blog Details</div>
                                 </a>
                             </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;.html" class="side-menu">
+                            <div class="side-menu__icon"> <i data-feather="box"></i> </div>
+                            <div class="side-menu__title">
+                                Teacher's
+                                <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('faculty.insert') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="side-menu__title"> Add New Teacher</div>
+                                </a>
+                            </li>
+
                         </ul>
                     </li>
                 {{-- ATTENDANCE END  --}}
