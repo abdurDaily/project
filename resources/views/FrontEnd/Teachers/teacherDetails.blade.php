@@ -4,9 +4,9 @@
         <div class="row">
             @foreach ($teacherData  as $data)
             <div class="col-lg-4">
-                <img style="border: 3px solid #00a651;width: 300px; height:300px; border-radius:10px;" src="{!! asset('storage/teacher/' .$data->image) !!}" alt="">
+                <img class="image" style="border: 3px solid #00a651;width: 300px; height:300px; border-radius:10px;" src="{!! asset('storage/teacher/' .$data->image) !!}" alt="">
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" style="border-bottom: #00a651 3px solid">
                 <div class="header">
                     <h1 style="color: #00a651;font-weight:bold;">{{ $data->name }}</h1>
                     <strong style="font-size: 20px">{{ $data->designation }}</strong>
@@ -15,14 +15,14 @@
                 <div class="details mt-4">
                     <i style="font-size: 20px;" class="fa fa-phone"><strong style="margin-left:10px;">Phone : </strong> <span>{{ $data->phone }}</span></i> <br>
                     <i style="font-size: 20px;" class="fa fa-envelope"><strong style="margin-left:10px;">Email : </strong> <span>{{ $data->email }}</span></i><br>
-                    <a href="{{ $data->website }}"><i style="font-size: 20px;" class="fa fa-globe"><strong style="margin-left:10px;">Protfolio Website</i></a>
+                    <a target="_blank" href="{{ $data->website }}"><i style="font-size: 20px;" class="fa fa-globe"><strong style="margin-left:10px;">Protfolio Website</i></a>
                     
                     {{-- BIOGRAPHY   --}}
                       <div class="edu-info mt-5">
                         <h3 style="color: #00a651;font-weight:bold;">Biography</h3>
-                        <span style="font-size: 18px;">
+                        <p style="font-size: 18px;">
                             {!! $data->biography !!}
-                        </span>
+                        </p>
                       </div>
 
                             {{-- EDUCATION INFO  --}}
@@ -59,6 +59,9 @@
 @media (min-width: 576px) and (max-width: 991.98px) {
             .header{
                 margin-top: 40px !important;
+            }
+            .col-lg-4 > .image{
+                margin: 0 auto;
             }
          }
 

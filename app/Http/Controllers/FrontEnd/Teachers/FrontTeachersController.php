@@ -22,4 +22,7 @@ class FrontTeachersController extends Controller
         // dd($teacherData);
         return view('FrontEnd.Teachers.teacherDetails',compact('teacherData'));
     }
+
+
+   
 }

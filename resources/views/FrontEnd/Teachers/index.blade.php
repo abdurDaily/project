@@ -87,8 +87,9 @@
 <div class="course-area bg-img pt-130">
     <div class="container">
         <div class="section-title mb-75 course-mrg-small">
-            <h2> <span>Undergraduate</span> Courses</h2>
-            <p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
+            <h2>Our Honarable <span>Teacher's</span></h2>
+            <p>
+                Welcome to our university's distinguished faculty page.their innovative teaching methods and commitment to academic excellence create an engaging and enriching learning environment.Join us in exploring the exciting world of Engineering under the guidance of our expart teachers where curiosity knows no bounds and knowledge knows no limits.</p>
         </div>
         <div class="course-slider-active-3">
             @forelse ($allInfoTeachers as $data)

@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Backend\ApprovalController;
-use App\Http\Controllers\Backend\Balance\BalanceController;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\ApprovalController;
+use App\Http\Controllers\Backend\Balance\BalanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+ /**FACULTY DETAILS FOR WELCOME PAGE */
+
 Route::get('/', function () {
-    return view('welcome');
+    $allInfoTeachers = Teacher::all();
+    return view('welcome',compact('allInfoTeachers'));
 });
 
 Auth::routes();
