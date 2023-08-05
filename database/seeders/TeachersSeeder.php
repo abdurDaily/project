@@ -23,7 +23,7 @@ class TeachersSeeder extends Seeder
         $teacher->designation = 'Assistant Professor & Chairman';
         $teacher->phone = '+8802334461900';
         $teacher->email = 'szrashidcce@yahoo.com';
-        $teacher->image = 'ZahidurRashid.jpg';
+        $teacher->image = asset('storage/teacher/ZahidurRashid.jpg');
         $teacher->website = 'https://www.facebook.com/szrashid';
         $teacher->edu_info = '<ul>
         <li>M.Sc. in Computer Science and Engineering</li>
@@ -58,7 +58,7 @@ class TeachersSeeder extends Seeder
         $teacher->designation = 'Assistant Professor';
         $teacher->phone = '01325664893';
         $teacher->email = 'saifhannan@yahoo.com';
-        $teacher->image = 'Dr.SaifHannan.jpg';
+        $teacher->image =  asset('storage/teacher/Dr.SaifHannan.jpg');
         $teacher->website = 'https://ieeexplore.ieee.org/author/37086000613';
         $teacher->edu_info = '<ul>
         <li> Ph.D. in Electrical, Electronic and Systems Engineering from Universiti Kebangsaan Malaysia (UKM), Malaysia.</li>
@@ -104,7 +104,7 @@ class TeachersSeeder extends Seeder
         $teacher->designation = 'Assistant Professor';
         $teacher->phone = '01817750772';
         $teacher->email = 'ibrahim@iiuc.ac.bd';
-        $teacher->image = 'ibrahim.png';
+        $teacher->image = asset('storage/teacher/ibrahim.png');
         $teacher->website = 'https://www.facebook.com/ibrahim.rupom';
         $teacher->edu_info = '<ul>
         <li>B.sc in mathematics | CU | Bangladesh.</li>
@@ -123,7 +123,7 @@ class TeachersSeeder extends Seeder
         $teacher->designation = 'Assistant Professor | Proctor';
         $teacher->phone = '01815382718';
         $teacher->email = 'oranta68@yahoo.com';
-        $teacher->image = 'amirFaisal.png';
+        $teacher->image = asset('storage/teacher/amirFaisal.png');
         $teacher->website = 'https://www.facebook.com/md.mostafa.a.faisal';
         $teacher->edu_info = '<ul>
         <li>B.Sc. in EEE | IUT | Bangladesh.</li>
@@ -142,7 +142,7 @@ class TeachersSeeder extends Seeder
       $teacher->designation = 'Associate Professor';
       $teacher->phone = '+01715866362';
       $teacher->email = ' agafur_cox@yahoo.com';
-      $teacher->image = 'gafur.png';
+      $teacher->image =  asset('storage/teacher/gafur.png');
       $teacher->website = 'https://scholar.google.com/citations?hl=en&user=TOeqMr0AAAAJ&view_op=list_works&sortby=pubdate';
       $teacher->edu_info = '<ul>
       <li> M.Sc. in Electrical Engineering (Emphasis on Telecommunications), Blekinge Institute of Technology, Sweden</li>
@@ -176,7 +176,7 @@ class TeachersSeeder extends Seeder
         $teacher->designation = 'Associate Professor';
         $teacher->phone = '01716823959';
         $teacher->email = 'jashim-ete@iiuc.ac.bd';
-        $teacher->image = 'jashim.png';
+        $teacher->image = asset('storage/teacher/jashim.png');
         $teacher->website = 'https://www.facebook.com/profile.php?id=704352024';
         $teacher->edu_info = '<ul>
         <li>B.Sc. in EEE | CUET | Bangladesh.</li>
@@ -212,7 +212,7 @@ class TeachersSeeder extends Seeder
         $teacher->designation = 'Assistant Professor';
         $teacher->phone = '01912620655';
         $teacher->email = 'woli@iiuc.ac.bd';
-        $teacher->image = 'MohammadWoliUllah.jpg';
+        $teacher->image = asset('storage/teacher/MohammadWoliUllah.jpg');
         $teacher->website = 'https://www.facebook.com/m.woliullah';
         $teacher->edu_info = '<ul>
         <li>M.Engg. in EEE, Bangladesh.</li>

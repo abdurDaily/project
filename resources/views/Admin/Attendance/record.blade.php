@@ -52,6 +52,12 @@
 
         <div class="row">
             <div class="col-12">
+
+                <form action="{{ route('edit.attendance') }}" method="POST">
+                    @csrf
+                    @method('put')
+                    <input type="hidden" name="attendenceId" value="{{ $atteances->id }}">
+                
                 <table class="table table-responsive table-striped table-hover">
                     <tr>
                         <th>SN</th>
@@ -68,11 +74,12 @@
                             <td>{{ $student->std_id }}</td>
                             <td>
 
-                                @if (in_array($student->id,$attendedStudetID))
-                                present
-                                @else
-                                 <strong class="text-danger"> Absent  </strong>
-                                @endif
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" {{ in_array($student->id,$attendedStudetID) ? 'checked' : '' }} type="checkbox" role="switch" id="flexSwitchCheckDefault" name="present[]" value="{{ $student->id }}"
+                                    >
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ in_array($student->id,$attendedStudetID) ? 'Present' : 'Absent' }}</label>
+                                </div>
+                               
                                 
 
                             </td>
@@ -81,6 +88,10 @@
                         <h1>no record found</h1>
                     @endforelse
                 </table>
+                <button class="btn btn-primary w-100 mt-5">Submit</button>
+
+                </form>
+
             </div>
         </div>
     </div>

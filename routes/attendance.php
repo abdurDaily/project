@@ -15,4 +15,5 @@ Route::middleware('check')->prefix('/attendance')->group(function(){
   Route::get('/all-attendance-record', [AttendanceController::class, 'allAttendanceRecord'])->name('all.attendance.record');
   Route::get('/attendance-pdf', [AttendanceController::class, 'attendancePdf'])->name('attendance.pdf');
   Route::get('/attendance-pdf-data', [AttendanceController::class, 'attendancePdfData'])->name('attendance.pdf.data');
+  Route::put('/edit-attendance', [AttendanceController::class, 'editAttendance'])->name('edit.attendance');
 })->middleware('check');

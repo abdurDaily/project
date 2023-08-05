@@ -3,16 +3,16 @@
 
 <div class="slider-area">
     <div class="slider-active owl-carousel">
-        <div class="single-slider slider-height-2 bg-img align-items-center d-flex slider-overlay2-1 default-overlay" style="background-image:url({{ asset('assets/img/slider/slider-2.jpg') }});">
+        <div class="single-slider slider-height-2 bg-img align-items-center d-flex slider-overlay2-1 default-overlay" style="background-image:url({{ asset('assets/img/slider/slider-4.jpg') }});">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 col-sm-12">
                         <div class="slider-content slider-content-2 slider-animated-2 text-center">
-                            <h1 class="animated">Welcome to Glaxdu</h1>
+                            <h1 class="animated">Welcome to Dept. of ETE</h1>
                             <p class="animated">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
                             <div class="slider-btn">
-                                <a class="animated default-btn btn-green-color" href="about-us.html">ABOUT US</a>
-                                <a class="animated default-btn btn-white-color" href="contact.html">CONTACT US</a>
+                                <a class="animated default-btn btn-green-color" href="#">ABOUT US</a>
+                                <a class="animated default-btn btn-white-color" href="#">CONTACT US</a>
                             </div>
                         </div>
                     </div>
@@ -59,28 +59,14 @@
             <h2>About <span>Us</span></h2>
             <p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <br> quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
         </div>
-        <div class="row align-items-center">
-           <div class="col-lg-7 col-md-12">
-                <div class="about-img about-img-2 default-overlay mr-70">
-                    <img src="{{ asset('assets/img/banner/banner-2.jpg') }}" alt="">
-                    <a class="video-btn video-popup" href="https://www.youtube.com/watch?v=sv5hK4crIRc">
-                        <img src="{{ asset('assets/img/icon-img/video.png') }}" alt="">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-12">
-                <div class="about-content-2 pr-70">
-                    <p>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut voluptatLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercit.</p>
-                    <img src="{{ asset('assets/img/banner/banner-3.jpg') }}" alt="">
-                    <div class="signature mt-30">
-                        <img src="assets/img/icon-img/signature.png" alt="">
-                    </div>
-                    <div class="about-btn mt-45">
-                        <a class="default-btn" href="about-us.html">ABOUT US</a>
-                    </div>
-                </div>
-            </div>
+     <div class="row">
+        <div class="col-lg-7">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/5JqRgaifcps" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
+        <div class="col-lg-3">
+            <h1></h1>
+        </div>
+     </div>
     </div>
 </div>
 
@@ -95,7 +81,7 @@
             @forelse ($allInfoTeachers as $data)
             <div class="single-course">
                 <div class="course-img">
-                    <a href="course-details.html"><img class="animated" src="{!! asset('storage/teacher/' . $data->image) !!}" alt=""></a>
+                    <a href="course-details.html"><img class="animated" src="{{ $data->image }}" alt=""></a>
                     <span>{{ $data->designation }}</span>
                 </div>
                 <div class="course-content">

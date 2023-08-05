@@ -63,3 +63,14 @@
         });
     </script>
 @endpush
+
+
+{{-- @push('frontEndCSS')
+     <style>
+       @media (max-width: 768px) {
+           .select2-selection--single{
+              width: 200px !important;
+           }
+         }
+     </style>
+@endpush --}}
