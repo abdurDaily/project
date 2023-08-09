@@ -29,8 +29,9 @@ class TeachersController extends Controller
             $image = $request->file('image');
             $extension = $image->getClientOriginalExtension();
             $filename = 'teacher' . time() . '.' . $extension;
-            $image->storeAs('public/teacher', $filename);
-            $teacherData->image = $filename;
+            $path = $image->storeAs('teacher', $filename, 'public');
+            $imageUrl = env('APP_URL').'/storage/'.$path;
+            $teacherData->image = $imageUrl;
         }  
         $teacherData->name = $request->name;
         $teacherData->slug = uniqid(Str::slug($request->name));
