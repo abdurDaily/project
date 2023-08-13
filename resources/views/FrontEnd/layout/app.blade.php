@@ -72,12 +72,12 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li><a href="index.html"> HOME </a>
-                                        <ul class="submenu">
+                                    <li><a href="{{ ('/') }}"> HOME </a>
+                                        {{-- <ul class="submenu">
                                             <li><a href="index.html">home version 1</a></li>
                                             <li><a href="index-2.html">home version 2</a></li>
                                             <li><a href="index-3.html">home version 3</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                     <li><a href="{{ route('teachers.index') }}"> ABOUT  </a></li>
                                     <li class="mega-menu-position top-hover"><a href="shop.html"> SHOP <i class="fa fa-angle-down"></i> </a>
@@ -210,7 +210,7 @@
                 <div class="mobile-menu">
                     <nav id="mobile-menu-active">
                         <ul class="menu-overflow">
-                            <li><a href="index.html">HOME</a>
+                            <li><a href="{{ ('/') }}">HOME</a>
                                 <ul>
                                     <li><a href="index.html">home version 1</a></li>
                                     <li><a href="index-2.html">home version 2</a></li>
@@ -321,7 +321,7 @@
                         </div>
                         <div class="footer-list">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="{{ ('/') }}">Home</a></li>
                                 <li><a href="about-us.html">About Us</a></li>
                                 <li><a href="course.html">Courses</a></li>
                                 <li><a href="blog.html#">Admission</a></li>

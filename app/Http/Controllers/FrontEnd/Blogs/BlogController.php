@@ -12,21 +12,24 @@ use Illuminate\Support\Facades\Auth;
 class BlogController extends Controller
 {
 
-   /*
-       ********************** FRONTEND **************
-   */
-  
-    //** BLOG INDEX
+   /*********************** FRONTEND ***************/
+
+    /**
+     * BLOG INDEX
+     */
     public function index(){
        $blogDetails = BlogSubCategory::with('CategoryBlog')->latest()->paginate(6);
        $blogResent = BlogSubCategory::with('CategoryBlog')->latest()->paginate(3);
        return view('FrontEnd.Blogs.index',compact('blogDetails','blogResent'));
     }
-    //**BLOG DETAILS */
+    /**
+     * BLOG DETAILS 
+     */
     public function postDetails($slug){
       $blogDetail = BlogSubCategory::where('slug', $slug)->with('CategoryBlog')->first();
       return view('FrontEnd.Blogs.blogDetail',compact('blogDetail'));
     }
+            
 
 
 
@@ -93,11 +96,15 @@ class BlogController extends Controller
     $subCategory->slug = uniqid(Str::slug($request->title));
     
     if ($request->file('image')) {
-        $image = $request->file('image');
-        $extension = $image->getClientOriginalExtension();
-        $filename = 'blog_image_' . time() . '.' . $extension;
-        $image->storeAs('public/blog', $filename);
-        $subCategory->image = $filename;
+
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $filename = 'blog' . time() . '.' . $extension;
+            
+            $path = $image->storeAs('blogs', $filename, 'public');
+            $imageUrl = env('APP_URL').'/storage/'.$path;
+            $subCategory->image = $imageUrl;
+            
       }  
       
     $subCategory->author = Auth::user()->name;

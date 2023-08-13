@@ -23,10 +23,11 @@
                     <div class="row">
        
                     @forelse ($blogDetails as $data)
+    
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="single-blog mb-30">
                             <div class="blog-img">
-                                <a href="blog-details.html"><img style="width: 260px;height:202px; background-position: center;" src="{!! asset('storage/blog/' . $data->image) !!}" alt=""></a>
+                                <a href="blog-details.html"><img style="width: 260px;height:202px; background-position: center;" src="{!! $data->image !!}" alt=""></a>
                             </div>
                             <div class="blog-content-wrap">
                                 <span>{{ Str::limit($data->CategoryBlog->title,25) }}</span>
@@ -93,7 +94,7 @@
                             @forelse ($blogResent as $data)
                             <div class="single-recent-post">
                                 <div class="recent-post-img">
-                                    <a href="blog.html#"><img src="{!! asset('storage/blog/'.$data->image) !!}" alt=""></a>
+                                    <a href="#"><img src="{!! $data->image !!}" alt=""></a>
                                 </div>
                                 <div class="recent-post-content">
                                     <h5><a href="{{ route('blog.detail',$data->slug) }}">{{ Str::limit($data->title,30) }}</a></h5>
@@ -104,8 +105,6 @@
                             @empty
                               <h2>No Data Found</h2>
                             @endforelse
-
-                            
                         </div>
                     </div>
                     <div class="sidebar-category mb-40">

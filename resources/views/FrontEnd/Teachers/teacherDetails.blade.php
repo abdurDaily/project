@@ -4,7 +4,7 @@
         <div class="row">
             @foreach ($teacherData  as $data)
             <div class="col-lg-4">
-                <img class="image" style="border: 3px solid #00a651;width: 300px; height:300px; border-radius:10px;" src="{!! asset('storage/teacher/' .$data->image) !!}" alt="">
+                <img class="image" style="border: 3px solid #00a651;width: 300px; height:300px; border-radius:10px;" src="{!! $data->image !!}" alt="">
             </div>
             <div class="col-lg-6" style="border-bottom: #00a651 3px solid">
                 <div class="header">
