@@ -52,7 +52,20 @@ class BlogController extends Controller
       return view('FrontEnd.Blogs.singleBlogDetails',compact('subCategoryDetails','subBlogs','totalCategory','sideLink','parentCategory'));
     }
         
-            
+    /*
+     * BLOG SEARCHING 
+    */
+    public function blogSearch(Request $request){
+      $searchBlog = BlogSubCategory::where('title','LIKE','%'.$request->search.'%')->get();
+      return view('FrontEnd.Blogs.searchBlog',compact('searchBlog'));
+    }
+     /*
+       * ALL BLOGS LIST
+     */
+    public function allBlog(){
+      $allBlog = BlogSubCategory::latest()->paginate(12);
+      return view('FrontEnd.Blogs.allBlog',compact('allBlog')); 
+    }      
 
 
 

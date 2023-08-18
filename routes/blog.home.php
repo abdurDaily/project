@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/blog')->group(function(){
     Route::get('/details/{slug}', [BlogController::class, 'singleBlogDetails'])->name('singleBlog.details');
+    Route::get('/search', [BlogController::class, 'blogSearch'])->name('blog.search');
+    Route::get('/all', [BlogController::class, 'allBlog'])->name('all.blog.list');
 });
 
 ?>

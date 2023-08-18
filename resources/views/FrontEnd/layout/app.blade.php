@@ -134,10 +134,10 @@
                                         </ul>
                                     </li>
                                     <li><a href="course.html"> COURSES / PROGRAMMES</a></li>
-                                    <li><a href="{{ route('blog.index') }}"> BLOG </a>
+                                    <li><a href="{{ route('all.blog.list') }}"> BLOG </a>
                                         <ul class="submenu">
-                                            <li><a href="{{ route('blog.index') }}">blog</a></li>
-                                            <li><a href="blog-details.html">blog details</a></li>
+                                            {{-- <li><a href="{{ route('blog.index') }}">blog</a></li> --}}
+                                            <li><a href="{{ route('all.blog.list') }}">blog details</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="contact.html"> CONTACT </a></li>
@@ -194,11 +194,17 @@
                                     <i class="fa fa-search"></i>
                                 </button>
                                 <div class="search-content">
-                                    <form action="blog.html#">
+                                    {{-- <form action="blog.html#">
                                         <input type="text" placeholder="Search">
                                         <button>
                                             <i class="fa fa-search"></i>
                                         </button>
+                                    </form> --}}
+
+                                    <form action="{{ route('blog.search') }}" method="GET">
+                                        @csrf
+                                        <input type="search" name="search" placeholder="Search by post title">
+                                        <button><i class="fa fa-search"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -211,11 +217,11 @@
                     <nav id="mobile-menu-active">
                         <ul class="menu-overflow">
                             <li><a href="{{ ('/') }}">HOME</a>
-                                <ul>
+                                {{-- <ul>
                                     <li><a href="index.html">home version 1</a></li>
                                     <li><a href="index-2.html">home version 2</a></li>
                                     <li><a href="index-3.html">home version 3</a></li>
-                                </ul>
+                                </ul> --}}
                             </li>
                             <li><a href="{{ route('teachers.index') }}">About</a></li>
                             <li><a href="shop.html">Shop</a>
@@ -268,10 +274,10 @@
                                 </ul>
                             </li>
                             <li><a href="about-us.html">About us</a></li>
-                            <li><a href="{{ route('blog.index') }}">Blog</a>
+                            <li><a href="{{ route('all.blog.list') }}">Blog</a>
                                 <ul>
-                                    <li><a href="{{ route('blog.index') }}">blog</a></li>
-                                    <li><a href="blog-details.html">blog details</a></li>
+                                    {{-- <li><a href="{{ route('blog.index') }}">blog</a></li> --}}
+                                    <li><a href="{{ route('all.blog.list') }}">blog details</a></li>
                                 </ul>
                             </li>
                             <li><a href="contact.html">Contact</a></li>

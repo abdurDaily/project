@@ -85,8 +85,9 @@
                         <div class="sidebar-title mb-40">
                             <h4>Search</h4>
                         </div>
-                        <form>
-                            <input type="text" placeholder="Search">
+                        <form action="{{ route('blog.search') }}" method="GET">
+                            @csrf
+                            <input type="search" name="search" placeholder="Search by post title">
                             <button><i class="fa fa-search"></i></button>
                         </form>
                     </div>

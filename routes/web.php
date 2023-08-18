@@ -22,7 +22,7 @@ use App\Models\BlogSubCategory;
 
 Route::get('/', function () {
     $allInfoTeachers = Teacher::all();
-    $blogDetails= BlogSubCategory::with('CategoryBlog')->latest()->paginate(2);
+    $blogDetails= BlogSubCategory::with('CategoryBlog')->latest()->paginate(6);
     return view('welcome',compact('allInfoTeachers','blogDetails'));
 });
 
