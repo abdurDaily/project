@@ -60,12 +60,12 @@
             <p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <br> quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
         </div>
      <div class="row">
-        <div class="col-lg-7">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/5JqRgaifcps" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="col-lg-12 mx-auto">
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/5JqRgaifcps" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        <div class="col-lg-3">
+        {{-- <div class="col-lg-3">
             <h1></h1>
-        </div>
+        </div> --}}
      </div>
     </div>
 </div>

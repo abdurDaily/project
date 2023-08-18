@@ -11,7 +11,7 @@
             @forelse ($allInfoTeachers as $data)
             <div class="single-course">
                 <div class="course-img">
-                    <a href="course-details.html"><img class="animated" src="{{ $data->image }}" alt=""></a>
+                    <a href="{{ route('faculty.details',$data->slug) }}"><img class="animated" src="{{ $data->image }}" alt=""></a>
                     <span>{{ $data->designation }}</span>
                 </div>
                 <div class="course-content">

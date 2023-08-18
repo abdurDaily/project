@@ -45,7 +45,7 @@
                             </div>
                             <h4>View Our Event Gallery</h4>
                         </div>
-                        <div class="seat-book-wrap bg-img mt-80 " style="background-image:url(assets/img/event/seat-book.jpg);">
+                        <div class="seat-book-wrap bg-img mt-80 " style="background-image:url({{ asset('assets/img/event/seat-book.jpg') }});">
                             <div class="seat-book-title text-center">
                                 <h3>Book Your Seat Now</h3>
                                 <p> natus error sit voluptatem accu antium dolorem laudantium, totam rem aperiam, eaque entore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
@@ -99,8 +99,8 @@
                         <a href="event-details.html#"><img src="assets/img/banner/banner-4.jpg" alt=""></a>
                         <div class="sidebar-social">
                             <ul>
-                                <li><a class="facebook" href="event-details.html#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="youtube" href="event-details.html#"><i class="fa fa-youtube-play"></i></a></li>
+                                <li><a class="facebook" target="_blank" href="https://www.facebook.com/ETEIIUC"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="youtube" target="_blank" href="https://youtu.be/Q9tqAGPCHVs"><i class="fa fa-youtube-play"></i></a></li>
                                 <li><a class="twitter" href="event-details.html#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a class="google" href="event-details.html#"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
@@ -146,7 +146,7 @@
                         <div class="sidebar-tag">
                             <ul>
                                 @foreach ($parentCategory as $parentData)
-                                  <li><a href="#">{{ $parentData->title }}</a></li>   
+                                  <li><a href="{{ route('blog.category.post',$parentData->id) }}">{{ $parentData->title }}</a></li>   
                                 @endforeach
                             </ul>
                         </div>

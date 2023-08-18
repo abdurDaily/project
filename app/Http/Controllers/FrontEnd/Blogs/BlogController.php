@@ -26,7 +26,7 @@ class BlogController extends Controller
     }
     /**
      * BLOG DETAILS 
-     */
+    */
     public function postDetails($slug){
       $blogDetail = BlogSubCategory::where('slug', $slug)->with('CategoryBlog')->first();
       return view('FrontEnd.Blogs.blogDetail',compact('blogDetail'));
@@ -47,7 +47,7 @@ class BlogController extends Controller
       $sideLink = BlogSubCategory::latest()->paginate(10);
       //BLOG CATEGORY FIND FOR SIDE LINK
       // $parentCategory = BlogSubCategory::select('blog_categorie_id')->with('CategoryBlog')->get();
-      $parentCategory = BlogCategory::select('title')->with('SubBlog')->get();
+      $parentCategory = BlogCategory::select('title','id')->with('SubBlog')->get();
       // dd($parentCategory);
       return view('FrontEnd.Blogs.singleBlogDetails',compact('subCategoryDetails','subBlogs','totalCategory','sideLink','parentCategory'));
     }
@@ -65,7 +65,14 @@ class BlogController extends Controller
     public function allBlog(){
       $allBlog = BlogSubCategory::latest()->paginate(12);
       return view('FrontEnd.Blogs.allBlog',compact('allBlog')); 
-    }      
+    }  
+    /*
+      * ALL POST WITH PARENT CATEGORY
+    */   
+    public function blogForCategory($id){
+      $blogFindByCategory = BlogSubCategory::where('blog_categorie_id',$id)->latest()->paginate(12);
+      return view('FrontEnd.Blogs.allPostForCategory',compact('blogFindByCategory'));
+    }
 
 
 

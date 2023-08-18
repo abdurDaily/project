@@ -18,46 +18,108 @@ class SubjectSeeder extends Seeder
     {
         /**1st semester courses start */
         $user = new Subject();
-        $user->subject_name = 'Engineering Drawing (CE-1108)';
+        $user->subject_name = 'UREL-1106	Advanced English';
         $user->author = 'abdur';
         $user->semester_id = '1';
         $user->save();
         
         $user = new Subject();
-        $user->subject_name = 'Electrical Circuit I DC (EEE-1103)';
+        $user->subject_name = 'UREM-1101	Text of Ethics and Morality';
         $user->author = 'abdur';
         $user->semester_id = '1';
         $user->save();
         
         $user = new Subject();
-        $user->subject_name = 'Electrical Circuit I DC Sessional (EEE-1104)';
+        $user->subject_name = 'PHY-1101	Physics I';
         $user->author = 'abdur';
         $user->semester_id = '1';
         $user->save();
         
         $user = new Subject();
-        $user->subject_name = 'Mathematics-I (Differential and Integral Calculus) (MATH-1107)';
+        $user->subject_name = 'EEE-1103	Electrical Circuit I DC';
         $user->author = 'abdur';
         $user->semester_id = '1';
         $user->save();
         
         $user = new Subject();
-        $user->subject_name = 'Physics I (PHY-1101)';
+        $user->subject_name = '	EEE-1104	Electrical Circuit I DC Sessional';
         $user->author = 'abdur';
         $user->semester_id = '1';
         $user->save();
         
         $user = new Subject();
-        $user->subject_name = 'Advanced English (UREL-1106)';
+        $user->subject_name = '	CE-1108	Engineering Drawing';
         $user->author = 'abdur';
         $user->semester_id = '1';
         $user->save();
         
-        $user = new Subject();
-        $user->subject_name = 'Text of Ethics and Morality (UREM-1101)';
-        $user->author = 'abdur';
-        $user->semester_id = '1';
-        $user->save();
+
         /**1st semester courses end */
+
+        /**2ND SEMESTER */
+        $user = new Subject();
+        $user->subject_name = 'CSE-1221	Computer Fundamentals & Programming';
+        $user->author = 'abdur';
+        $user->semester_id = '2';
+        $user->save();
+
+        
+        $user = new Subject();
+        $user->subject_name = '	CSE-1222	Computer Fundamentals & Programming Sessional';
+        $user->author = 'abdur';
+        $user->semester_id = '2';
+        $user->save();
+        
+        
+        $user = new Subject();
+        $user->subject_name = '	EEE-1243	Electrical Circuit II AC';
+        $user->author = 'abdur';
+        $user->semester_id = '2';
+        $user->save();
+        
+        $user = new Subject();
+        $user->subject_name = '	EEE-1244	Electrical Circuit II AC Sessional';
+        $user->author = 'abdur';
+        $user->semester_id = '2';
+        $user->save();
+        
+        $user = new Subject();
+        $user->subject_name = '	EEE-1245	Basic Electronic';
+        $user->author = 'abdur';
+        $user->semester_id = '2';
+        $user->save();
+        
+        $user = new Subject();
+        $user->subject_name = 'EEE-1246	Basic Electronic Sessional';
+        $user->author = 'abdur';
+        $user->semester_id = '2';
+        $user->save();
+        
+        $user = new Subject();
+        $user->subject_name = '	MATH-1207	Mathematics-II (Geometry and Differential Equations)';
+        $user->author = 'abdur';
+        $user->semester_id = '2';
+        $user->save();
+        
+        $user = new Subject();
+        $user->subject_name = 'PHY-1201	Physics-II';
+        $user->author = 'abdur';
+        $user->semester_id = '2';
+        $user->save();
+        
+        $user = new Subject();
+        $user->subject_name = '	PHY-1202	Physics-II Sessional';
+        $user->author = 'abdur';
+        $user->semester_id = '2';
+        $user->save();
+        
+        $user = new Subject();
+        $user->subject_name = 'URED-1201	Basic Principles of Islam (‘Aqidah+’Ibadah)';
+        $user->author = 'abdur';
+        $user->semester_id = '2';
+        $user->save();
+
+        
+        /**2ND SEMESTER END */
     }
 }

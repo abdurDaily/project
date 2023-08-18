@@ -133,7 +133,7 @@
                                             <li><a href="{{ route('frontend.attendance.check.index') }}">Check Attendance</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="course.html"> COURSES / PROGRAMMES</a></li>
+                                    <li><a href="{{ route('courses.record') }}"> COURSES </a></li>
                                     <li><a href="{{ route('all.blog.list') }}"> BLOG </a>
                                         <ul class="submenu">
                                             {{-- <li><a href="{{ route('blog.index') }}">blog</a></li> --}}
@@ -329,7 +329,7 @@
                             <ul>
                                 <li><a href="{{ ('/') }}">Home</a></li>
                                 <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="course.html">Courses</a></li>
+                                <li><a href="{{ route('courses.record') }}">Courses</a></li>
                                 <li><a href="blog.html#">Admission</a></li>
                                 <li><a href="blog.html#">Terms & Conditions</a></li>
                             </ul>
