@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ApprovalController;
 use App\Http\Controllers\Backend\Balance\BalanceController;
+use App\Models\BlogSubCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,8 @@ use App\Http\Controllers\Backend\Balance\BalanceController;
 
 Route::get('/', function () {
     $allInfoTeachers = Teacher::all();
-    return view('welcome',compact('allInfoTeachers'));
+    $blogDetails= BlogSubCategory::with('CategoryBlog')->latest()->paginate(2);
+    return view('welcome',compact('allInfoTeachers','blogDetails'));
 });
 
 Auth::routes();

@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\FrontEnd\Blogs;
 
+use App\Models\Teacher;
+use App\Models\Attendance;
 use Illuminate\Support\Str;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Models\BlogSubCategory;
 use App\Http\Controllers\Controller;
-use App\Models\Attendance;
 use Illuminate\Support\Facades\Auth;
+
 class BlogController extends Controller
 {
 
@@ -29,6 +31,27 @@ class BlogController extends Controller
       $blogDetail = BlogSubCategory::where('slug', $slug)->with('CategoryBlog')->first();
       return view('FrontEnd.Blogs.blogDetail',compact('blogDetail'));
     }
+
+    /*
+      * BLOG DETAILS FROM HOME PAGE 
+    */
+    public function singleBlogDetails($slug){
+      $subCategoryDetails = BlogSubCategory::with('CategoryBlog')->where('slug',$slug)->get();
+      //SUB CATTEGORY SUMMEION
+      $totalPost = BlogSubCategory::select('slug')->get();
+      $subBlogs = count($totalPost);
+      //CATEGORY SUMMATION
+      $totalCategory = BlogCategory::select('title')->get();
+      $totalCategory = count($totalCategory);
+      //SITE BLOG POST LINK 
+      $sideLink = BlogSubCategory::latest()->paginate(10);
+      //BLOG CATEGORY FIND FOR SIDE LINK
+      // $parentCategory = BlogSubCategory::select('blog_categorie_id')->with('CategoryBlog')->get();
+      $parentCategory = BlogCategory::select('title')->with('SubBlog')->get();
+      // dd($parentCategory);
+      return view('FrontEnd.Blogs.singleBlogDetails',compact('subCategoryDetails','subBlogs','totalCategory','sideLink','parentCategory'));
+    }
+        
             
 
 
@@ -84,9 +107,7 @@ class BlogController extends Controller
         'title' => 'required',
         'image' => 'required',
         'category' => 'required',
-        'blog_details_one' => 'required',
-        'highlight_text' => 'required',
-        'blog_details_two' => 'required',
+        'blog_details' => 'required',
     ]);
 
     
@@ -110,9 +131,7 @@ class BlogController extends Controller
     $subCategory->author = Auth::user()->name;
     $subCategory->blog_categorie_id = $request->category;
     $subCategory->title = $request->title;
-    $subCategory->blog_details_one = $request->blog_details_one;
-    $subCategory->highlight_text = $request->highlight_text;
-    $subCategory->blog_details_two = $request->blog_details_two;
+    $subCategory->blog_details = $request->blog_details;
     if($request->video){
       $subCategory->video = $request->video;
     }

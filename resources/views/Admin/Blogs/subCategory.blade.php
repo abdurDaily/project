@@ -46,26 +46,9 @@
 
 
 
-                            <label for="blog_details_one">Details About Post (Part - 1)</label>
-                            <textarea placeholder="--- Detail Part 1 --" class="mt-2 form-control" id="blog_details_one" name="blog_details_one" id="blog_details_one" cols="30" rows="10"></textarea>
-                            @error('blog_details_one')
-                                <strong class="text-danger">{{ $message }}</strong>
-                            @enderror
-
-                            
-
-
-                            <label for="highlight_text">Helifhted Text Regurding This Post or Post Title</label>
-                            <textarea placeholder="--- Highlighted Test ---" class="mt-2 form-control" id="highlight_text" name="highlight_text" id="highlight_text" cols="30" rows="10"></textarea>
-                            @error('highlight_text')
-                                <strong class="text-danger">{{ $message }}</strong>
-                            @enderror
-
-
-
-                            <label for="blog_details_two">Details About Post (Part - 2)</label>
-                            <textarea placeholder="--- Detail Part 2 ---" class="mt-2 form-control" id="blog_details_two" name="blog_details_two" id="blog_details_two" cols="30" rows="10"></textarea>
-                            @error('blog_details_two')
+                            <label for="blog_details">Details About Post (Part - 1)</label>
+                            <textarea placeholder="--- Detail Part 1 --" class="mt-2 form-control" id="blog_details" name="blog_details" id="blog_details" cols="30" rows="10"></textarea>
+                            @error('blog_details')
                                 <strong class="text-danger">{{ $message }}</strong>
                             @enderror
 

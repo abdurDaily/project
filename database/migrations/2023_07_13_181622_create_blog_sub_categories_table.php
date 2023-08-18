@@ -20,9 +20,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('image')->nullable();
             $table->foreignId('blog_categorie_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->longText('blog_details_one');
-            $table->longText('highlight_text');
-            $table->longText('blog_details_two');
+            $table->longText('blog_details');
             $table->string('video')->default('https://www.youtube.com/watch?v=SyPqRvXY0R4');
             $table->timestamps();
         });
